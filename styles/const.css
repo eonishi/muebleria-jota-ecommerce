@@ -1,0 +1,9 @@
+/* Defino variables accesible a todos los elementos*/
+:root {
+    /* Paleta de colores */
+    --color-primary: #A0522D;  /* títulos principales */
+    --color-accent: #87A96B;  /* acento de sustentabilidad */ 
+    --color-bg-primary: #F5E6D3; /* fondos, fotografia*/
+    --color-detail: #D4A437; /* detalles premium */
+    --color-accent-secondary: #C47A6D; /* acentos suaves */
+}
