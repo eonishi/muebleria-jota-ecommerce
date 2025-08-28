@@ -1,0 +1,167 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header */
+header {
+    background: #F5E6D3;
+    color: #A0522D;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 2rem;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+}
+
+.primario path {
+    fill: #A0522D;
+}
+
+.invertido path {
+    fill: #F5E6D3;
+}
+
+.monocromo-negro path {
+    fill: #000000;
+}
+
+.monocromo-blanco path {
+    fill: #FFFFFF;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+header nav a {
+    color: #A0522D;
+    font-family: 'Inter', system-ui, sans-serif;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 1rem;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+.hero {
+    background: url('banner.jpg') center/cover no-repeat;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    /* filtro oscuro */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 3rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+.hero-btn {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+
+    color: #fff;
+    background: #A0522D;
+
+    display: inline-block;
+    
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.hero-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.productos-destacados {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.productos-destacados h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #3a2d2d;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.producto {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    transition: transform 0.3s;
+}
+
+.producto img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.producto h3 {
+    margin: 1rem 0 0.5rem;
+}
+
+.producto p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.producto:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    background: #3a2d2d;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
