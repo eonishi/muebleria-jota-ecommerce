@@ -6,4 +6,8 @@
     --color-bg-primary: #F5E6D3; /* fondos, fotografia*/
     --color-detail: #D4A437; /* detalles premium */
     --color-accent-secondary: #C47A6D; /* acentos suaves */
+
+
+    --font-title: 'Playfair Display', 'Georgia', 'Times New Roman', Times, serif;
+    --font-body: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
