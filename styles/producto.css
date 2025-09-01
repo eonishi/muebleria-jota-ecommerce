@@ -14,6 +14,12 @@ header {
     padding: 10px 20px;
     flex-direction: row;
     background-color: var(--color-bg-primary);
+
+    > img {
+        height: 30px;
+        width: auto;
+        overflow: clip;
+    }
 }
 
 header .material-symbols-outlined {
@@ -26,13 +32,25 @@ main {
     flex-wrap: wrap;
     justify-content: start;
     align-items: center;
-    gap: 15px; /* SUS */
+    gap: 15px; /* SUS, cambiar y ajustar espaciado entre cada section*/
     margin: 20px;
 }
 
 .product-image {
-    background-color: var(--color-bg-primary);
+    background: var(--color-bg-gradient-primary);
     border-radius: 10px;
+
+    > img {
+        filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.1));
+    }
+}
+
+.title-and-fav {
+    width: 100%;
+    display: flex;
+    flex-flow: row unwrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #product-name {
@@ -54,6 +72,10 @@ main {
 
 .stars {
     color: var(--color-detail);
+
+    > span {
+        font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 24;
+    }
 }
 
 hr {
@@ -100,6 +122,7 @@ table > tbody > tr > td {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
     gap: 20px;
 }
 
@@ -166,10 +189,11 @@ table > tbody > tr > td {
 /*Section de productos similares (o recomendado tambien puede ser)*/
 .similar-product{
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap;
+    justify-content: start;
     margin-top: 40px;
+    gap: 10px;
 }
-
 .similar-product > h3 {
     color: var(--color-primary);
     font-family: var(--font-title);
@@ -178,14 +202,36 @@ table > tbody > tr > td {
 }
 
 .similar-product > ul {
+    padding: 0px;;
+    width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    list-style-type: none;
+    flex-direction: row;
+    gap: 10px;
 }
 
 .similar-product > ul > li{
-    object-fit: cover;
-    width: 50%;
+    padding: 10px;
+    list-style: none;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    border-radius: 10px;
+
+    > div {
+        border-radius: 10px;
+        background: #dedede;
+        background: var(--color-bg-gradient-primary);
+
+        > img {
+            filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.1));
+        }
+    }
+
+    > h6 {
+        font-family: var(--font-body);
+    }
+    > p {
+        color: var(--color-primary);
+        font-family: var(--font-title);
+    }
 }
 
 footer {
@@ -194,8 +240,4 @@ footer {
     justify-content: space-evenly;
     text-align: center;
     font-size: small;
-}
-
-footer > p {
-    padding: 40px;
 }
