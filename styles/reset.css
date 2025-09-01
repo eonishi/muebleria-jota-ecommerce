@@ -27,6 +27,7 @@ body {
 img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
+  overflow: clip;
 }
 
 /* 7. Inherit fonts for form controls */

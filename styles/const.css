@@ -4,6 +4,7 @@
     --color-primary: #A0522D;  /* títulos principales */
     --color-accent: #87A96B;  /* acento de sustentabilidad */ 
     --color-bg-primary: #F5E6D3; /* fondos, fotografia*/
+    --color-bg-gradient-primary: linear-gradient(10deg, rgb(255, 255, 255) 25%, var(--color-bg-primary));
     --color-detail: #D4A437; /* detalles premium */
     --color-accent-secondary: #C47A6D; /* acentos suaves */
 
