@@ -39,6 +39,7 @@ header {
     display: flex;
     gap: 1rem;
 }
+
 .menu a {
     color: #A0522D;
     font-family: 'Inter', system-ui, sans-serif;
@@ -128,7 +129,8 @@ header {
     margin: 1rem 0;
 }
 
-.hero-btn {
+/* Botón genérico para secciones */
+.btn {
     font-family: 'Inter', system-ui, sans-serif;
     font-weight: 700;
     font-size: 0.875rem;
@@ -147,20 +149,23 @@ header {
     cursor: pointer;
 }
 
-.hero-btn:hover {
+.btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.productos-destacados {
+/* Estilo genérico para secciones */
+.section-box {
     padding: 2rem 3rem;
     text-align: center;
     background-color: #F5E6D3;
     margin: 3rem;
     border-radius: 30px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
-.productos-destacados h2 {
+/* Título genérico para secciones */
+.section-box h2 {
     margin: 0 1rem 2rem 1rem;
     font-size: 2rem;
     font-weight: 400;
@@ -243,38 +248,25 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 3rem 1rem;
-    background-color: #F5E6D3; /* Alabastro cálido */
+    gap: 2rem;
 }
 
-.contacto-box {
-    background: #fff;
-    padding: 2.5rem;
-    border-radius: 16px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    max-width: 500px;
-    width: 100%;
+.contacto {
+    max-width: 600px;
+    margin: 3rem auto;
 }
 
 form {
-    padding: 1rem 0;
     width: 100%;
-}
-
-h1 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    color: #A0522D; /* Siena tostado */
-    text-align: center;
-    margin-bottom: 1.5rem;
 }
 
 form label {
     display: block;
-    margin-bottom: 0.4rem;
-    font-family: 'Inter', sans-serif;
+    margin-bottom: 0.5rem;
+    font-family: 'Inter', system-ui, sans-serif;
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 300;
+    line-height: 1.6;
     color: #A0522D;
 }
 
@@ -285,9 +277,10 @@ form textarea {
     margin-bottom: 1.2rem;
     border: 1px solid #C47A6D; /* Rosa polvoriento */
     border-radius: 8px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     font-size: 1rem;
     transition: border 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
 }
 
 form input:focus,
@@ -297,27 +290,11 @@ form textarea:focus {
     outline: none;
 }
 
-form button {
-    display: block;
-    width: 100%;
-    background-color: #D4A437; /* Vara de Oro */
-    color: #fff;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+.btn-contacto {
+    background-color: #D4A437;
     border: none;
-    padding: 0.9rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
 }
 
-form button:hover {
-    background-color: #C47A6D; /* Rosa polvoriento */
-    transform: translateY(-2px);
-}
 
 #estado {
     margin-top: 1rem;
