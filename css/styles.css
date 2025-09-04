@@ -193,7 +193,6 @@ h2 {
     background: #fff;
     border-radius: 8px;
     /* padding: 1rem; */
-    transition: transform 0.3s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -209,7 +208,6 @@ h2 {
 }
 
 .producto h2 {
-    text-align: center;
     font-family: 'Inter', system-ui, sans-serif;
     font-weight: 700;
     font-size: 1.1rem;
@@ -220,7 +218,6 @@ h2 {
 }
 
 .producto p {
-    text-align: center;
     font-size: 0.9rem;
     color: #666;
     margin: 0.75rem 1.5rem;
@@ -326,6 +323,10 @@ form textarea:focus {
     gap: 2rem;
     padding: 2rem 1rem;
     border-top: 1px solid #A0522D;
+}
+
+.productos-grid article {
+    padding: 1rem 0rem;
 }
 
 .catalogo-box {
