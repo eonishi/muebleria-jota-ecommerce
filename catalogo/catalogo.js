@@ -1,6 +1,6 @@
 const productosContainer = document.querySelector('.productos-grid');
 
-fetch('productos.json')
+fetch('../productos.json')
     .then(response => response.json())
     .then(productos => {
         productos.forEach(producto => {
