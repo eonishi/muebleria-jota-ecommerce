@@ -266,6 +266,8 @@ form label {
     font-weight: 300;
     line-height: 1.6;
     color: #A0522D;
+    text-align: left;  
+    margin-left: 2px;
 }
 
 form input,
@@ -296,6 +298,7 @@ form textarea:focus {
 
 
 #estado {
+    display: none; 
     margin-top: 1rem;
     padding: 0.8rem;
     border-radius: 8px;
@@ -305,12 +308,14 @@ form textarea:focus {
 }
 
 #estado.error {
-    background-color: #fbe4e1;
-    color: #a94442;
+    display: block;
+    background-color: #FAD4C4;
+    color: #8C2F1B;
     border: 1px solid #e0b4b4;
 }
 
 #estado.exito {
+    display: block;
     background-color: #e6f4ea;
     color: #2e7d32;
     border: 1px solid #b6d7b6;
