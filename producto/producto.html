@@ -2,145 +2,28 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8" />
-	<meta
-		name="viewport"
-		content="width=device-width, initial-scale=1.0"
-	/>
-	<link
-		rel="stylesheet"
-		href="./styles/producto.css"
-	/>
-	<link
-		rel="stylesheet"
-		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=add,add_shopping_cart,favorite,menu,remove,shopping_bag,star,star_half&display=block"
-	/>
-	<link
-		rel="icon"
-		href="./images/logo.svg"
-		type="images/x-icon"
-	/>
-	<title>Aparador Uspallata</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Detalle de producto</title>
+	<link rel="stylesheet" href="../styles/producto.css">
+	<link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
 </head>
 <body>
 	<header>
-		<span class="material-symbols-outlined">menu</span>
-		<img
-			src="./images/logo.svg"
-			alt="Logo de Muebleria Jota"
-		/>
-		<span class="material-symbols-outlined">shopping_bag</span>
+    	<span class="material-symbols-outlined">menu</span>
+    	<img src="../images/logo.svg" alt="Logo de Mueblería Jota" />
+    	<span class="material-symbols-outlined">shopping_bag</span>
 	</header>
+
 	<main>
-		<div class="product-image">
-			<img
-				src="./images/Aparador Uspallata.png"
-				alt="Aparador Uspallata"
-			/>
-		</div>
-		
-		<div class="product-info">
-			<div class="title-and-fav">
-				<h1 id="product-name">Aparador Uspallata</h1>
-				<span
-					class="material-symbols-outlined"
-					id="favorite"
-					>favorite</span
-				>
-			</div>
-			
-			<section class="rating">
-				<div class="stars">
-					<span class="material-symbols-outlined">star</span>
-					<span class="material-symbols-outlined">star</span>
-					<span class="material-symbols-outlined">star</span>
-					<span class="material-symbols-outlined">star</span>
-					<span class="material-symbols-outlined">star_half</span>
-				</div>
-				<p>(120 reseñas)</p>
-			</section>
-			<p>
-				Aparador de seis puertas fabricado en nogal sostenible con tiradores
-				metálicos en acabado latón. Su silueta minimalista realza el veteado
-				natural de la madera, creando una pieza que combina funcionalidad y
-				elegancia atemporal para espacios contemporáneos.
-			</p>
-
-			<hr />
-
-			<section class="prod-info">
-				<table>
-					<thead>
-						<tr>
-							<th>MEDIDAS</th>
-							<th>MATERIALES</th>
-							<th>ACABADO</th>
-							<th>PESO</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>180 x 45 x 75 cm</td>
-							<td>Nogal, latón</td>
-							<td>Aceite natural</td>
-							<td>68 kg</td>
-						</tr>
-					</tbody>
-				</table>
-			</section>
-
-			<hr />
-
-			<section class="purchase">
-				<p id="price">$1,250.00</p>
-				<div class="amount-btn">
-					<button>
-						<span class="material-symbols-outlined">remove</span>
-					</button>
-					<strong>1</strong>
-					<button>
-						<span class="material-symbols-outlined">add</span>
-					</button>
-				</div>
-
-				<div class="purchase-btn">
-					<button class="add-cart-btn">
-						<span class="material-symbols-outlined">add_shopping_cart</span>
-						Agregar al carrito
-					</button>
-					<button class="buy-btn">Comprar</button>
-				</div>
-			</section>
-		</div>
-
-		<section class="similar-product">
-			<h3>Productos similares</h3>
-			<ul>
-				<li>
-					<div>
-						<img
-							src="./images/Biblioteca Recoleta.png"
-							alt="Biblioteca Recoleta"
-						/>
-					</div>
-					<h6>Biblioteca Recoleta</h6>
-					<p>$980.00</p>
-				</li>
-				<li>
-					<div>
-						<img
-							src="./images/Butaca Mendoza.png"
-							alt="Butaca Mendoza"
-						/>
-					</div>
-					<h6>Butaca Mendoza</h6>
-					<p>$1,500.00</p>
-				</li>
-			</ul>
-		</section>
-		<hr />
+		<section id="detalle-producto" class="detalle-producto"></section>
+		<!-- Los productos se cargarán dinámicamente desde JS -->
 	</main>
+
 	<footer>
-		<p>Muebleria Jota S.A. Todos los derechos reservados.</p>
+    	<p>Mueblería Jota S.A. — Todos los derechos reservados.</p>
 	</footer>
+	<script src="producto.js"></script>
 </body>
 </html>
+

@@ -8,7 +8,7 @@ fetch('../productos.json')
             articulo.classList.add('producto');
 
             articulo.innerHTML = `
-                <a href="#">
+                <a href="../producto/producto.html?id=${producto.id}">
                     <img src="${producto.imagen}" alt="${producto.product_name}">
                     <h2>${producto.product_name}</h2>
                 </a>
