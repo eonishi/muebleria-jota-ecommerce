@@ -9,7 +9,7 @@ fetch('../productos.json')
 
             articulo.innerHTML = `
                 <a href="#">
-                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                    <img src="${producto.imagen}" alt="${producto.product_name}">
                     <h2>${producto.product_name}</h2>
                 </a>
             `;
