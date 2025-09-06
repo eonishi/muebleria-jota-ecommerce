@@ -4,7 +4,7 @@
 /* ====== Estructura general / Header ====== */
 body {
   /* no uses flex en body, deja fluir */
-    background: var(--color-bg-page, #f7efe2);
+    background: #fff;
     color: #3f342f;
 }
 

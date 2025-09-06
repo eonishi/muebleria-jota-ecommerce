@@ -121,11 +121,12 @@ header {
 
 .hero h1 {
     font-size: 3rem;
+    color: #fff;
+    font-weight: 700;
 }
 
-.hero p {
-    font-size: 1.2rem;
-    margin: 1rem 0;
+.hero h2 {
+    color: #fff;
 }
 
 /* Botón genérico para secciones */
@@ -165,15 +166,16 @@ header {
 }
 
 /* Título genérico para secciones */
-h2 {
-    margin: 0 1rem 2rem 1rem;
-    font-size: 2rem;
-    font-weight: 400;
+h1,h2 {
+    margin: 0 1rem 1rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
     font-family: 'Playfair Display', Georgia, serif;
     color: #A0522D;
     text-decoration: none;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    border: none;
 }
 
 .productos-container {
@@ -188,12 +190,15 @@ h2 {
     .productos-container {
         flex-direction: row;
     }
+
+    h1,h2 {
+        font-size: 2rem
+    }
 }
 
 .producto {
     background: #fff;
     border-radius: 8px;
-    /* padding: 1rem; */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -248,6 +253,8 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    border-top: 1px solid #A0522D;
+    padding: 1rem 0 0 0;
 }
 
 .contacto {
@@ -297,6 +304,9 @@ form textarea:focus {
     width: 100%;
 }
 
+.btn-contacto:hover {
+    background-color: #b68d2f;
+}
 
 #estado {
     display: none; 
@@ -351,11 +361,11 @@ form textarea:focus {
     justify-content: space-between;
     min-height: 350px;
     border: 1px solid #ddd;
-    padding: 1rem;
+    box-sizing: border-box;
 }
 
 .productos-grid .producto h2 {
-    margin: 0.5rem 0;
+    margin: 0.5rem 1rem;
 }
 
 .productos-grid .producto p {
@@ -363,10 +373,15 @@ form textarea:focus {
 }
 
 .productos-grid .producto button {
-    margin-top: 1rem;
-    width: 100%;
+    align-self: center;
+    width: calc(100% - 2rem);
     border: none;
     background-color: #87A96B;
+    box-sizing: border-box;
+}
+
+.productos-grid .producto button:hover{
+    background-color: #6d8857;
 }
 
 #buscador {
