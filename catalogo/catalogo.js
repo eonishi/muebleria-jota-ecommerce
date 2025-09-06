@@ -1,20 +1,76 @@
-const productosContainer = document.querySelector('.productos-grid');
+// import { actualizarCarrito, agregarAlCarrito } from "../carrito/cartHelper.js";
 
-fetch('../productos.json')
-    .then(response => response.json())
+let productosGlobales = [];
+
+function limpiarContenedor() {
+    const contenedor = document.getElementById("productos-grid");
+    if (!contenedor) return;
+
+    while (contenedor.firstChild) {
+        contenedor.removeChild(contenedor.firstChild);
+    }
+}
+
+function cargarCatalogo(productos) {
+    const contenedor = document.getElementById("productos-grid");
+    if (!contenedor) return;
+
+    limpiarContenedor(); 
+
+    productos.forEach(p => {
+        const card = document.createElement("article");
+        card.className = "producto";
+
+        const link = document.createElement("a");
+        link.href = `../producto/producto.html?id=${p.id}`;
+
+        const img = document.createElement("img");
+        img.src = p.imagen;
+        img.alt = p.product_name;
+
+        const nombre = document.createElement("h2");
+        nombre.textContent = p.product_name;
+
+        // const desc = document.createElement("p");
+        // desc.textContent = p.description;
+
+        // const precio = document.createElement("strong");
+        // precio.textContent = `$${p.precio}`;
+
+        link.appendChild(img);
+        link.appendChild(nombre);
+        // link.appendChild(desc);
+        // link.appendChild(precio);
+
+        card.appendChild(link);
+
+        const btn = document.createElement("button");
+        btn.className = "btn"
+        btn.textContent = "Añadir al carrito";
+        // btn.addEventListener("click", () => agregarAlCarrito(p));
+
+        card.appendChild(btn);
+
+        contenedor.appendChild(card);
+    });
+}
+
+fetch("../data/productos.json")
+    .then(res => res.json())
     .then(productos => {
-        productos.forEach(producto => {
-            const articulo = document.createElement('article');
-            articulo.classList.add('producto');
-
-            articulo.innerHTML = `
-                <a href="../producto/producto.html?id=${producto.id}">
-                    <img src="${producto.imagen}" alt="${producto.product_name}">
-                    <h2>${producto.product_name}</h2>
-                </a>
-            `;
-
-            productosContainer.appendChild(articulo);
-        });
+        productosGlobales = productos; 
+        cargarCatalogo(productosGlobales);
+        // actualizarCarrito(); 
     })
-    .catch(error => console.error('Error cargando los productos:', error));
+    .catch(error => console.error("Error al cargar los productos:", error));
+
+document.addEventListener("DOMContentLoaded", () => {
+    const inputBuscador = document.getElementById("buscador");
+    if (!inputBuscador) return;
+
+    inputBuscador.addEventListener("input", () => {
+        const texto = inputBuscador.value.toLowerCase();
+        const filtrados = productosGlobales.filter(p => p.product_name.toLowerCase().includes(texto));
+        cargarCatalogo(filtrados);
+    });
+});

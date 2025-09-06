@@ -9,8 +9,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    
-    <!-- HEADER -->
     <header>
         <div class="logo-container">
             <svg class="logo primario" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 375">
@@ -24,7 +22,7 @@
                 </g>
             </svg>
         </div>
-        <nav> <!--(Barra de Navegación) -->
+        <nav> 
             <ul class="menu">
                 <li><a href="../inicio/inicio.html">Inicio</a></li>
                 <li><a href="../catalogo/catalogo.html">Productos</a></li>
@@ -44,22 +42,18 @@
         </nav>
     </header>
     
-    <!-- CATÁLOGO -->
     <main>
         <section class="catalogo-box">
-            <h2 class="catalogo-titulo">Productos</h2>
-            <div class="productos-grid">
-                <!-- Los productos se cargarán dinámicamente desde JS -->
-            </div>
+            <div class="titulo-container"><h2 class="catalogo-titulo">Productos</h2></div>
+            <input type="text" id="buscador" placeholder="Buscar producto...">
+            <div class="productos-grid" id="productos-grid"></div>
         </section>
     </main>
     
-    <!-- FOOTER -->
     <footer>
         <p>© 2025 Mueblería Hermanos Jota | Todos los derechos reservados</p> <!-- Deberíamos poner algo más? -->
     </footer>
 
-    <!-- JS -->
     <script src="catalogo.js"></script>
 </body>
 </html>

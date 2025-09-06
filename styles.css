@@ -149,8 +149,9 @@ header {
 }
 
 .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+    background: #864527;
 }
 
 /* Estilo genérico para secciones */
@@ -228,7 +229,7 @@ h2 {
 }
 
 .producto:hover {
-    transform: translateY(-5px);
+    /* transform: translateY(-5px); */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -322,12 +323,14 @@ form textarea:focus {
 }
 
 /* -------- CATÁLOGO --------- */
+.titulo-container {
+    border-bottom: 1px solid #A0522D;
+}
+
 .productos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    padding: 2rem 1rem;
-    border-top: 1px solid #A0522D;
 }
 
 .productos-grid article {
@@ -340,4 +343,57 @@ form textarea:focus {
 
 .catalogo-titulo {
     margin-bottom: 1rem;
+}
+
+.productos-grid .producto {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 350px;
+    border: 1px solid #ddd;
+    padding: 1rem;
+}
+
+.productos-grid .producto h2 {
+    margin: 0.5rem 0;
+}
+
+.productos-grid .producto p {
+    flex-grow: 1;
+}
+
+.productos-grid .producto button {
+    margin-top: 1rem;
+    width: 100%;
+    border: none;
+    background-color: #87A96B;
+}
+
+#buscador {
+    display: block;
+    width: 100%;
+    margin: 1rem 0 1rem;
+    padding: 0.8rem 1rem;
+
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: #a3a2a2;
+
+    border: 1px solid #bebdbd;
+    background-color: #f5f5f5;
+    border-radius: 12px;
+
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+#buscador::placeholder {
+    color: #a3a2a2;
+    font-weight: 300;
+}
+
+#buscador:focus {
+    border-color: none;
+    outline: none;
 }
