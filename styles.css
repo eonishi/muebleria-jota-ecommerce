@@ -283,7 +283,7 @@ form textarea {
     width: 100%;
     padding: 0.8rem;
     margin-bottom: 1.2rem;
-    border: 1px solid #C47A6D; /* Rosa polvoriento */
+    border: 1px solid #C47A6D;
     border-radius: 8px;
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 1rem;
