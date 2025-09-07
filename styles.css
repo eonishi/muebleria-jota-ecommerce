@@ -130,6 +130,17 @@ header {
   font-size: 1rem;
 }
 
+.hero .hero-content h2 {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 300;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-size: clamp(1rem, 2.2vw, 1.4rem);
+  color: #4b403a; /* marrón neutro */
+  opacity: 0.95;
+  margin: 0 0 2.5rem 0;
+}
+
 /* Botón genérico para secciones */
 .btn {
   font-family: "Inter", system-ui, sans-serif;
@@ -148,6 +159,7 @@ header {
 
   text-decoration: none;
   cursor: pointer;
+  margin-top: 1.5rem;
 }
 
 .btn:hover {
