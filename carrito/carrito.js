@@ -70,7 +70,7 @@ function renderCarrito() {
 
     const spanPrecio = document.createElement("span");
     spanPrecio.className = "precio";
-    spanPrecio.textContent = `$${p.precio * p.cantidad}`; // precio total
+    spanPrecio.textContent = `${p.precio * p.cantidad}`; // precio total
 
     const btnBorrar = document.createElement("button");
     btnBorrar.className = "borrar";
