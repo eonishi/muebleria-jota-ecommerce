@@ -1,5 +1,6 @@
 let productosGlobales = [];
 
+// Función para cargar productos destacados...
 function cargarDestacados(productos, cantidad = 3) {
     const contenedor = document.querySelector(".productos-container");
     if (!contenedor) return;
@@ -49,3 +50,13 @@ fetch("../data/productos.json")
         cargarDestacados(productosGlobales, 3);
     })
     .catch(error => console.error("Error al cargar los productos destacados:", error));
+
+// ---------------- Menú hamburguesa ----------------
+const hamburger = document.querySelector(".hamburger");
+const menu = document.querySelector(".menu");
+
+if (hamburger && menu) {
+    hamburger.addEventListener("click", () => {
+        menu.classList.toggle("active");
+    });
+}

@@ -8,6 +8,8 @@ function handleSubmit(event) {
     const email = document.getElementById("email").value.trim();
     const mensaje = document.getElementById("mensaje").value.trim();
 
+    estado.classList.remove("error", "exito"); // limpio clases previas
+
     if (!nombre || !email || !mensaje) {
         estado.textContent = "Por favor, complete los campos";
         estado.className = "error";
@@ -16,9 +18,9 @@ function handleSubmit(event) {
 
     const elEmailEsVelido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!elEmailEsVelido.test(email)) {
-    estado.textContent = "Ingrese un email válido (ej: usuario@dominio.com)";
-    estado.className = "error";
-    return;
+        estado.textContent = "Ingrese un email válido";
+        estado.className = "error";
+        return;
     }
 
     estado.textContent = "¡Gracias " + nombre + ", recibimos tu mensaje!";
@@ -27,3 +29,13 @@ function handleSubmit(event) {
     formulario.reset();
 }
 formulario.addEventListener("submit", handleSubmit);
+
+// ---------------- Menú hamburguesa ----------------
+const hamburger = document.querySelector(".hamburger");
+const menu = document.querySelector(".menu");
+
+if (hamburger && menu) {
+    hamburger.addEventListener("click", () => {
+        menu.classList.toggle("active");
+    });
+}

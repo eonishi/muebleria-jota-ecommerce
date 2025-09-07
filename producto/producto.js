@@ -53,3 +53,13 @@ fetch("../data/productos.json")
     })
     
     .catch((e) => console.log(e));
+
+// ---------------- Menú hamburguesa ----------------
+const hamburger = document.querySelector(".hamburger");
+const menu = document.querySelector(".menu");
+
+if (hamburger && menu) {
+    hamburger.addEventListener("click", () => {
+        menu.classList.toggle("active");
+    });
+}

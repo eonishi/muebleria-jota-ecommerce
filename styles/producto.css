@@ -181,7 +181,7 @@ main {
 
 #product-specs ul {
     list-style: none;
-    argin: .25rem 0 0;
+    margin: .25rem 0 0;
     padding: 0;
 }
 
@@ -261,15 +261,17 @@ main {
 
 .info h1 {
     font-family: 'Inter', system-ui, sans-serif;
-        font-weight: 700;
-        font-size: 1.1rem;
-        letter-spacing: 0.08em;
-        margin-top: 0.5rem;
-        margin-bottom: 0rem;
-        color: #A0522D;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    margin-top: 0.5rem;
+    margin-bottom: 0rem;
+    margin-left: 0rem;
+    text-transform: none;
 }
 
-.info p,strong {
+.info p,
+.info strong {
     font-size: 0.9rem;
     color: #666;
     font-family: 'Inter', system-ui, sans-serif;

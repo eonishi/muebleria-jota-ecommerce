@@ -31,16 +31,12 @@ function cargarCatalogo(productos) {
         const nombre = document.createElement("h2");
         nombre.textContent = p.product_name;
 
-        // const desc = document.createElement("p");
-        // desc.textContent = p.description;
-
-        // const precio = document.createElement("strong");
-        // precio.textContent = `$${p.precio}`;
+        const precio = document.createElement("p");
+        precio.textContent = `$${p.price}`;
 
         link.appendChild(img);
         link.appendChild(nombre);
-        // link.appendChild(desc);
-        // link.appendChild(precio);
+        link.appendChild(precio);
 
         card.appendChild(link);
 
@@ -74,3 +70,13 @@ document.addEventListener("DOMContentLoaded", () => {
         cargarCatalogo(filtrados);
     });
 });
+
+// ---------------- Menú hamburguesa ----------------
+const hamburger = document.querySelector(".hamburger");
+const menu = document.querySelector(".menu");
+
+if (hamburger && menu) {
+    hamburger.addEventListener("click", () => {
+        menu.classList.toggle("active");
+    });
+}
