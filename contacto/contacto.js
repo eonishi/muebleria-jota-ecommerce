@@ -1,5 +1,3 @@
-import { actualizarCarrito, agregarAlCarrito } from "../carrito/cartHelper.js";
-
 const formulario = document.getElementById("formularioDeContacto");
 const estado = document.getElementById("estado");
 
