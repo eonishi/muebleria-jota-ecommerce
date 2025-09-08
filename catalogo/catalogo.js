@@ -32,7 +32,7 @@ function cargarCatalogo(productos) {
     nombre.textContent = p.product_name;
 
     const precio = document.createElement("p");
-    precio.textContent = `$${p.price}`;
+    precio.textContent = p.price;
 
     link.appendChild(img);
     link.appendChild(nombre);
