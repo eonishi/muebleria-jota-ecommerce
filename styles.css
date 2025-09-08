@@ -579,3 +579,209 @@ form textarea:focus {
     font-size: 2rem;
   }
 }
+/* ===== CARRITO ====== */
+
+main {
+  max-width: 1100px;
+  margin: 2.5rem auto;
+  padding: 0 2rem;
+}
+
+/* Lista de productos */
+.carrito-lista {
+  list-style: none;
+  margin: 1.5rem 0 2rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Card de ítem */
+.carrito-item {
+  display: grid;
+  grid-template-columns: 96px 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Imagen */
+.carrito-item > img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #f5e6d3; /* fondo Alabastro */
+}
+
+.carrito-item .info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.carrito-item .info .nombre {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #a0522d; /* Siena Tostado */
+}
+.carrito-item .info .descripcion {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 0.93rem;
+  color: #4b403a;
+  opacity: 0.9;
+}
+
+/* Cantidad + precio + eliminar */
+.cantidad-precio {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Selector cantidad */
+.cantidad {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid #e6e2df;
+  border-radius: 12px;
+  padding: 0.25rem 0.5rem;
+  background: #fff;
+}
+.cantidad .menos,
+.cantidad .mas {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 8px;
+  background: #f5e6d3;
+  color: #a0522d;
+  font-weight: 700;
+  cursor: pointer;
+}
+.cantidad .cantidad-num {
+  width: 34px;
+  text-align: center;
+  font: 700 0.95rem "Inter", system-ui, sans-serif;
+}
+
+/* Precio de cada ítem */
+.cantidad-precio .precio {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #a0522d;
+}
+
+/* Botón eliminar */
+.cantidad-precio .borrar {
+  border: 0;
+  background: transparent;
+  color: #8c2f1b;
+  font: 500 0.9rem "Inter", system-ui, sans-serif;
+  cursor: pointer;
+}
+.cantidad-precio .borrar:hover {
+  text-decoration: underline;
+}
+
+/* Total */
+.total-carrito {
+  margin: 2rem 0 3rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #a0522d;
+}
+.total-carrito::before {
+  content: "TOTAL";
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #4b403a;
+}
+
+#carrito-container:empty::before {
+  content: "El carrito está vacío";
+  display: block;
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #a3a2a2;
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 300;
+}
+
+.cantidad-precio .precio,
+.total-carrito {
+  display: none !important;
+}
+
+/* Botón finalizar compra */
+.checkout-btn {
+  background: #a0522d;
+  color: #fff;
+  border: 0;
+  padding: 0.9rem 1.25rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-family: "Inter", system-ui, sans-serif;
+  cursor: pointer;
+}
+.checkout-btn:hover {
+  filter: brightness(1.05);
+}
+
+.total-carrito {
+  display: none !important;
+}
+
+.checkout-btn {
+  background: #a0522d; /* Siena Tostado */
+  color: #fff;
+  border: 0;
+  padding: 0.9rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-family: "Inter", system-ui, sans-serif;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: background 0.2s ease;
+  text-decoration: none; /* para el <a> */
+}
+
+.checkout-btn:hover {
+  background: #8c2f1b;
+}
+
+/* Responsive */
+@media (max-width: 780px) {
+  .carrito-item {
+    grid-template-columns: 76px 1fr;
+    gap: 0.75rem;
+  }
+  .carrito-item > img {
+    width: 76px;
+    height: 76px;
+  }
+  .cantidad-precio {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+}
