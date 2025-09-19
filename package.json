@@ -1,0 +1,34 @@
+{
+  "name": "muebleria-jota-ecommerce",
+  "version": "1.0.0",
+  "description": "Ecommerce de Muebleria Jota",
+  "private": true,
+  "workspaces": [
+    "client",
+    "backend"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "start": "echo \"Error: no start script specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marimilhas/muebleria-jota-ecommerce.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marimilhas/muebleria-jota-ecommerce/issues"
+  },
+  "homepage": "https://github.com/marimilhas/muebleria-jota-ecommerce#readme",
+  "devDependencies": {
+    "standard": "^17.1.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "standard"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "muebleria-jota-backend",
+  "version": "1.0.0",
+  "description": "Backend del Ecommerce Muebleria Jota",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node --watch app.js",
+    "lint": "eslint . --fix --ext .js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
