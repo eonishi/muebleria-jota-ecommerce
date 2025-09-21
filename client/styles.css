@@ -412,6 +412,14 @@ form textarea {
   box-sizing: border-box;
 }
 
+#mensaje {
+  min-height: 120px;
+  max-height: 300px;
+  field-sizing: content;
+  overflow: hidden;
+  resize: none;
+}
+
 form input:focus,
 form textarea:focus {
   border: 1px solid #a0522d;
