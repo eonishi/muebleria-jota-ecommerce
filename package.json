@@ -7,10 +7,10 @@
     "client",
     "backend"
   ],
-  "main": "index.js",
   "scripts": {
-    "start": "echo \"Error: no start script specified\" && exit 1",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "concurrently 'npm run back' 'npm run front'",
+    "back": "npm run dev --workspace=backend",
+    "client": "npm run dev --workspace=client"
   },
   "type": "module",
   "repository": {
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/marimilhas/muebleria-jota-ecommerce#readme",
   "devDependencies": {
+    "concurrently": "^9.2.1",
     "standard": "^17.1.2"
   },
   "eslintConfig": {
