@@ -43,7 +43,7 @@ function cargarDestacados(productos, cantidad = 3) {
   });
 }
 
-fetch("../data/productos.json")
+fetch("./data/productos.json")
   .then((res) => res.json())
   .then((productos) => {
     productosGlobales = productos;
