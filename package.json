@@ -8,7 +8,7 @@
     "backend"
   ],
   "scripts": {
-    "dev": "concurrently 'npm run back' 'npm run front'",
+    "dev": "concurrently 'npm run back' 'npm run client'",
     "back": "npm run dev --workspace=backend",
     "client": "npm run dev --workspace=client"
   },

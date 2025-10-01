@@ -1,5 +1,6 @@
 import express from 'express'
 import morgan from 'morgan'
+import cors from 'cors'
 import { productosRouter } from './routes/productos.js'
 
 const app = express()
@@ -9,6 +10,7 @@ const PORT = process.env.PORT ?? 3000
 app.use(express.json())
 app.use(morgan('tiny'))
 
+app.use(cors())
 // Routas disponibles (primero las de mayor especificidad)
 app.use('/api/productos', productosRouter)
 app.use('/', (req, res) => { res.json('Hello World! 👋') })
