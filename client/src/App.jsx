@@ -9,12 +9,10 @@ function App() {
 		<>
 			<NavBar />
 			<main>
-        <HeroBanner />
-        <ProductosDestacados />
+				<HeroBanner />
+				<ProductosDestacados />
 			</main>
-      <Footer />
-      
-			<script src='inicio/inicio.js'></script>
+			<Footer />
 			<script>{actualizarCarrito()}</script>
 		</>
 	)
