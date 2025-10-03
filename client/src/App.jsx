@@ -1,16 +1,29 @@
+import { useEffect, useState } from "react"
 import { actualizarCarrito } from "./carrito/cartHelper"
 import NavBar from "components/NavBar"
-import Footer from "./components/Footer"
-import HeroBanner from "./components/HeroBanner"
-import ProductosDestacados from "components/ProductosDestacados"
+import Footer from "components/Footer"
+import Home from "components/Home"
+
+// Simulo un enum de las rutas disponibles
+const Routes = {
+	HOME: "Home",
+	CATALOGO: "Catalogo",
+	CARRITO: "Carrito",
+	CONTACTO: "Contacto",
+}
 
 function App() {
+	const [currentRoute, setCurrentRoute] = useState(Routes.HOME)
+	useEffect(() => {
+		console.log("Navegando a la ruta:", currentRoute)
+	},[currentRoute])
+
 	return (
 		<>
-			<NavBar />
+			<NavBar routes={Routes} navigate={setCurrentRoute} />
 			<main>
-				<HeroBanner />
-				<ProductosDestacados />
+				{currentRoute === Routes.HOME && <Home />}
+
 			</main>
 			<Footer />
 			<script>{actualizarCarrito()}</script>

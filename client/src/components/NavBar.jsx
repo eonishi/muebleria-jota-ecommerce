@@ -1,6 +1,11 @@
 import Logo from 'assets/logo.svg'
 
-export default function NavBar() {
+export default function NavBar({ routes, navigate }) {
+	function handleNav(e, route) {
+		e.preventDefault()
+		navigate(route)
+	}
+
 	return (
 		<>
 			<header>
@@ -8,16 +13,22 @@ export default function NavBar() {
 				<nav>
 					<ul className='menu'>
 						<li>
-							<a href='../index.html'>Inicio</a>
+							<a href='' onClick={e => handleNav(e, routes.HOME)}>
+								Inicio
+							</a>
 						</li>
 						<li>
-							<a href='../catalogo/catalogo.html'>Productos</a>
+							<a href='' onClick={e => handleNav(e, routes.CATALOGO)} >
+								Productos
+							</a>
 						</li>
 						<li>
-							<a href='../contacto/contacto.html'>Contacto</a>
+							<a href='' onClick={e => handleNav(e, routes.CONTACTO)} >
+								Contacto
+							</a>
 						</li>
 						<li>
-							<a href='../carrito/carrito.html'>
+							<a href='' onClick={e => handleNav(e, routes.CARRITO)} >
 								<i className='fa-solid fa-cart-shopping'></i>
 								Carrito (<span id='cart-count'>0</span>)
 							</a>
