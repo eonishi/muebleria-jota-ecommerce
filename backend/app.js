@@ -4,6 +4,8 @@ import cors from 'cors'
 import { productosRouter } from './routes/productos.js'
 
 const app = express()
+
+// TODO: podriamos tener un archivo de configuraciones
 const PORT = process.env.PORT ?? 3000
 
 // Middleware
@@ -13,7 +15,10 @@ app.use(cors())
 
 // Routas disponibles (primero las de mayor especificidad)
 app.use('/api/productos', productosRouter)
-app.get("/", (req, res) => { res.json("Hello World! 👋") })
+app.use('/', express.static('../client/dist/', {
+  maxAge: '30d', // El navegador puede cachear los archivos por 30 días
+  immutable: true,
+}))
 
 // Rutas no encontradas
 app.use((req, res) => { 

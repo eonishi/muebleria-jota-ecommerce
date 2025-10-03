@@ -105,7 +105,7 @@ header {
 
 .hero::after {
   content: "";
-  background-image: url("./assets/hero-banner-img.png");
+  background-image: url("/assets/hero-banner-img.png");
   background-size: cover;
   background-position: center;
   filter: brightness(0.8) 

@@ -1,4 +1,3 @@
-import Logo from 'assets/logo.svg'
 
 export default function NavBar({ routes, navigate }) {
 	function handleNav(e, route) {
@@ -9,7 +8,7 @@ export default function NavBar({ routes, navigate }) {
 	return (
 		<>
 			<header>
-				<img src={Logo} alt="Logo de la empresa" className='logo' />
+				<img src="/assets/logo.svg" alt="Logo de la empresa" className='logo' />
 				<nav>
 					<ul className='menu'>
 						<li>

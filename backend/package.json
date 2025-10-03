@@ -6,7 +6,8 @@
   "main": "app.js",
   "scripts": {
     "dev": "node --watch app.js",
-    "lint": "standard --fix"
+    "lint": "standard --fix",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
