@@ -5,7 +5,7 @@ import ProductCard from './ProductCard.jsx'
 export default function Catalogo() {
   	const [productos, setProductos] = useState([])
 		useEffect(() => {
-			const url = import.meta.env.VITE_API_URL + "productos"
+      const url = "/api/productos"
 			fetch(url)
 				.then((res) => res.json())
 				.then((data) => {

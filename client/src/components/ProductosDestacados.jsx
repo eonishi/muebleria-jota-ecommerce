@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 export default function ProductosDestacados() {
 	const [productos, setProductos] = useState([])
 	useEffect(() => {
-		const url = import.meta.env.VITE_API_URL + "productos"
+		const url = "/api/productos"
 		fetch(url)
 			.then(res => res.json())
 			.then(data => {
@@ -39,7 +39,7 @@ function ProdCard({p}) {
 			<article className='producto'>
 				<a href={"/producto/" + p.id}>
 					<img
-						src={`/src/assets/${p.imagen}`}
+						src={`/assets/${p.imagen}`}
 						alt={p.product_name}
 					/>
 					<h2> {p.product_name} </h2>
