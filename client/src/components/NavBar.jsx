@@ -3,6 +3,9 @@ export default function NavBar({ routes, navigate }) {
 	function handleNav(e, route) {
 		e.preventDefault()
 		navigate(route)
+		// Cambia la URL sin recargar la página
+		// Para que solo re-renderice el contenido de main y NO TODA LA PÁGINA
+		window.history.pushState({}, '', route)
 	}
 
 	return (
@@ -12,22 +15,22 @@ export default function NavBar({ routes, navigate }) {
 				<nav>
 					<ul className='menu'>
 						<li>
-							<a href='' onClick={e => handleNav(e, routes.HOME)}>
+							<a href={`${routes.HOME}`} onClick={e => handleNav(e, routes.HOME)}>
 								Inicio
 							</a>
 						</li>
 						<li>
-							<a href='' onClick={e => handleNav(e, routes.CATALOGO)} >
+							<a href={`${routes.CATALOGO}`} onClick={e => handleNav(e, routes.CATALOGO)} >
 								Productos
 							</a>
 						</li>
 						<li>
-							<a href='' onClick={e => handleNav(e, routes.CONTACTO)} >
+							<a href={`${routes.CONTACTO}`} onClick={e => handleNav(e, routes.CONTACTO)} >
 								Contacto
 							</a>
 						</li>
 						<li>
-							<a href='' onClick={e => handleNav(e, routes.CARRITO)} >
+							<a href={`${routes.CARRITO}`} onClick={e => handleNav(e, routes.CARRITO)} >
 								<i className='fa-solid fa-cart-shopping'></i>
 								Carrito (<span id='cart-count'>0</span>)
 							</a>

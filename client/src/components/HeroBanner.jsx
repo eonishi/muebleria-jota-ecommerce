@@ -8,7 +8,7 @@ export default function HeroBanner() {
 						<h1>Calidad y diseño para tu hogar</h1>
 						<h2>Muebles artesanales con un estilo moderno</h2>
 						<a
-							href='../catalogo/catalogo.html'
+							href='/catalogo'
 							className='btn'
 						>
 							Ver productos

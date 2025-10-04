@@ -8,17 +8,17 @@ import Contacto from "components/Contacto"
 
 // Simulo un enum de las rutas disponibles
 const Routes = {
-	HOME: "Home",
-	CATALOGO: "Catalogo",
-	CARRITO: "Carrito",
-	CONTACTO: "Contacto",
+	HOME: "/",
+	CATALOGO: "/catalogo",
+	CARRITO: "/carrito",
+	CONTACTO: "/contacto",
 }
 
 function App() {
 	const [currentRoute, setCurrentRoute] = useState(Routes.HOME)
 	useEffect(() => {
-		console.log("Navegando a la ruta:", currentRoute)
-	},[currentRoute])
+		setCurrentRoute(window.location.pathname)
+	},[window.location.pathname])
 
 	return (
 		<>
