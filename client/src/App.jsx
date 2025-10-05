@@ -7,6 +7,7 @@ import Contacto from "components/Contacto"
 import Carrito from "components/Carrito/Carrito"
 import ProductDetail from "components/ProductDetail"
 import useCart from "hooks/useCart"
+import NotFound from "components/NotFound"
 
 // Simulo un enum de las rutas disponibles
 const Routes = {
@@ -32,6 +33,11 @@ function App() {
 				{currentRoute === Routes.CONTACTO && <Contacto />}
 				{currentRoute === Routes.CARRITO && <Carrito cart={carrito} />}
 				{Routes.PRODUCTO.test(currentRoute) && <ProductDetail cart={carrito} />}
+				{// Temporal hasta React Router - NotFound
+					Object.values(Routes).every((r) => r !== currentRoute) &&
+					!Routes.PRODUCTO.test(currentRoute) &&
+					<NotFound/>
+				}
 			</main>
 			
 			<Footer />
