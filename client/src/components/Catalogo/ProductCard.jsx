@@ -1,13 +1,19 @@
 
-export default function ProductCard({product_name, imagen, price}) {
+export default function ProductCard({ producto, addToCart }) {
+
   return (
     <article className='producto'>
       <a>
-        <img src={`/assets/${imagen}`} alt={ product_name } />
-        <h2>{ product_name }</h2>
-        <p>{ price }</p>
+        <img src={`/assets/${producto.imagen}`} alt={ producto.product_name } />
+        <h2>{ producto.product_name }</h2>
+        <p>{ producto.price }</p>
       </a>
-      <button className='btn'>Añadir al carrito</button>
+      <button
+        className='btn'
+        onClick={() => addToCart(producto)}
+      >
+        Añadir al carrito
+      </button>
     </article>
   )
 }

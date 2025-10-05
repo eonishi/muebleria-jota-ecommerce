@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
-import { actualizarCarrito } from "./carrito/cartHelper"
 import NavBar from "components/NavBar"
 import Footer from "components/Footer"
 import Home from "components/Home"
 import Catalogo from "components/Catalogo/Catalogo"
 import Contacto from "components/Contacto"
+import Carrito from "components/Carrito/Carrito"
+import useCart from "hooks/useCart"
 
 // Simulo un enum de las rutas disponibles
 const Routes = {
@@ -15,22 +16,22 @@ const Routes = {
 }
 
 function App() {
-	const [currentRoute, setCurrentRoute] = useState(Routes.HOME)
-	useEffect(() => {
-		setCurrentRoute(window.location.pathname)
-	},[window.location.pathname])
+	// Estado para las rutas
+	const [currentRoute, setCurrentRoute] = useState(() => window.location.pathname)
+	// Estado del carrito
+	const carrito = useCart()
 
 	return (
 		<>
-			<NavBar routes={Routes} navigate={setCurrentRoute} />
+			<NavBar routes={Routes} navigate={setCurrentRoute} cart={carrito} />
 			<main>
 				{currentRoute === Routes.HOME && <Home />}
-				{currentRoute === Routes.CATALOGO && <Catalogo />}
+				{currentRoute === Routes.CATALOGO && <Catalogo cart={carrito} />}
 				{currentRoute === Routes.CONTACTO && <Contacto />}
+				{currentRoute === Routes.CARRITO && <Carrito cart={carrito}/>}
 			</main>
 			
 			<Footer />
-			<script>{actualizarCarrito()}</script>
 		</>
 	)
 }

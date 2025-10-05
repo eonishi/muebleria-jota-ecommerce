@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Buscador from './Buscador'
 import ProductCard from './ProductCard.jsx'
 
-export default function Catalogo() {
+export default function Catalogo({ cart }) {
   	const [productos, setProductos] = useState([])
 		useEffect(() => {
       const url = "/api/productos"
@@ -12,7 +12,7 @@ export default function Catalogo() {
           setProductos(data)
 				})
 				.catch((err) => console.error("Error fetching products:", err))
-		}, [])
+    }, [])
 
   return (
     <>
@@ -22,7 +22,7 @@ export default function Catalogo() {
         </div>
         <Buscador />
         <div className="productos-grid" id="productos-grid">
-          {productos.map(p => <ProductCard key={p.id} {...p} />)}
+          {productos.map(p => <ProductCard key={p.id} producto={p} addToCart={cart.addProduct} />)}
         </div>
       </section>
     </>

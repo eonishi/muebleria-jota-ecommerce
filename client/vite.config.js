@@ -23,6 +23,8 @@ export default defineConfig({
       src: '/src',
       components: '/src/components',
       assets: '/public/assets',
+      utils: '/src/utils',
+      hooks: '/src/hooks',
     },
   }
 })

@@ -662,6 +662,7 @@ main {
   font-size: 0.93rem;
   color: #4b403a;
   opacity: 0.9;
+  text-wrap: pretty;
 }
 
 /* Cantidad + precio + eliminar */
@@ -731,7 +732,7 @@ main {
   color: #a0522d;
 }
 .total-carrito::before {
-  content: "TOTAL";
+  content: "TOTAL:";
   font-family: "Playfair Display", serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -749,11 +750,6 @@ main {
   font-weight: 300;
 }
 
-.cantidad-precio .precio,
-.total-carrito {
-  display: none !important;
-}
-
 /* Botón finalizar compra */
 .checkout-btn {
   background: #a0522d;
@@ -767,10 +763,6 @@ main {
 }
 .checkout-btn:hover {
   filter: brightness(1.05);
-}
-
-.total-carrito {
-  display: none !important;
 }
 
 .checkout-btn {
@@ -794,18 +786,58 @@ main {
 }
 
 /* Responsive */
-@media (max-width: 780px) {
+@media (max-width: 800px) {
+  #carrito-container {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
   .carrito-item {
-    grid-template-columns: 76px 1fr;
-    gap: 0.75rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr
   }
+
   .carrito-item > img {
-    width: 76px;
-    height: 76px;
+    width: auto;
+    height: 100px;
+    grid-column-start: 1;
+    grid-row-start: 2;
   }
+
+  .carrito-item .info {
+    grid-column: span 2 / span 2;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .carrito-item .info .nombre {
+    font-size: larger;
+
+  }
+  .carrito-item .info .descripcion {
+    display: none;
+  }
+
+
   .cantidad-precio {
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 0.75rem;
+    grid-row-start: 2;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cantidad-precio .precio {
+    font-size: larger;
+  }
+
+  .carrito-item .borrar {
+    display: none;
   }
 }

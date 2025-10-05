@@ -1,5 +1,5 @@
 
-export default function NavBar({ routes, navigate }) {
+export default function NavBar({ routes, navigate, cart }) {
 	function handleNav(e, route) {
 		e.preventDefault()
 		navigate(route)
@@ -32,7 +32,7 @@ export default function NavBar({ routes, navigate }) {
 						<li>
 							<a href={`${routes.CARRITO}`} onClick={e => handleNav(e, routes.CARRITO)} >
 								<i className='fa-solid fa-cart-shopping'></i>
-								Carrito (<span id='cart-count'>0</span>)
+								Carrito (<span id='cart-count'>{ cart.quantity }</span>)
 							</a>
 						</li>
 					</ul>
