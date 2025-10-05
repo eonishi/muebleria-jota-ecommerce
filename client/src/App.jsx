@@ -5,6 +5,7 @@ import Home from "components/Home"
 import Catalogo from "components/Catalogo/Catalogo"
 import Contacto from "components/Contacto"
 import Carrito from "components/Carrito/Carrito"
+import ProductDetail from "components/ProductDetail"
 import useCart from "hooks/useCart"
 
 // Simulo un enum de las rutas disponibles
@@ -13,6 +14,7 @@ const Routes = {
 	CATALOGO: "/catalogo",
 	CARRITO: "/carrito",
 	CONTACTO: "/contacto",
+	PRODUCTO: /^\/producto\/[^/]+$/
 }
 
 function App() {
@@ -28,7 +30,8 @@ function App() {
 				{currentRoute === Routes.HOME && <Home />}
 				{currentRoute === Routes.CATALOGO && <Catalogo cart={carrito} />}
 				{currentRoute === Routes.CONTACTO && <Contacto />}
-				{currentRoute === Routes.CARRITO && <Carrito cart={carrito}/>}
+				{currentRoute === Routes.CARRITO && <Carrito cart={carrito} />}
+				{Routes.PRODUCTO.test(currentRoute) && <ProductDetail cart={carrito} />}
 			</main>
 			
 			<Footer />
