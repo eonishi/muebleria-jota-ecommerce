@@ -1,18 +1,15 @@
-import { useEffect, useState } from 'react'
+import useFetch from 'hooks/useFetch.jsx'
 import Buscador from './Buscador'
 import ProductCard from './ProductCard.jsx'
 
 export default function Catalogo({ cart }) {
-  	const [productos, setProductos] = useState([])
-		useEffect(() => {
-      const url = "/api/productos"
-			fetch(url)
-				.then((res) => res.json())
-				.then((data) => {
-          setProductos(data)
-				})
-				.catch((err) => console.error("Error fetching products:", err))
-    }, [])
+  const { data, loading, error } = useFetch('/api/productos')
+  console.log("data: ", {data, loading, error})
+  
+  if (error) {
+    console.log(error)
+    return (<p>Lo sentimos hubo un error, vuelva pronto</p>)
+  }
 
   return (
     <>
@@ -22,7 +19,10 @@ export default function Catalogo({ cart }) {
         </div>
         <Buscador />
         <div className="productos-grid" id="productos-grid">
-          {productos.map(p => <ProductCard key={p.id} producto={p} addToCart={cart.addProduct} />)}
+          {loading ?
+            <p>Buscando productos...</p>
+            : data.map(p => <ProductCard key={p.id} producto={p} addToCart={cart.addProduct} />)
+          }
         </div>
       </section>
     </>

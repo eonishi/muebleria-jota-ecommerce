@@ -1,25 +1,21 @@
-import { useEffect, useState } from "react"
+import useFetch from "hooks/useFetch"
 
 export default function ProductosDestacados() {
-	const [productos, setProductos] = useState([])
-	useEffect(() => {
-		const url = "/api/productos"
-		fetch(url)
-			.then(res => res.json())
-			.then(data => {
-				setProductos(data)
-			})
-			.catch(err => console.error("Error fetching products:", err))
-	}, [])
+	const { data, loading, error } = useFetch('/api/productos')
+	
+	if (error) {
+		console.log(error)
+		return(<div>Ocurrio un problema</div>)
+	}
 	
 	return (
 		<>
 			<section className='section-box'>
 				<h2>Productos Destacados</h2>
 				<div className='productos-container'>
-					{productos.length === 0 ?
+					{loading ?
 						(<p>cargando</p>) :
-						(<ShowProd products={productos} />)
+						(<ShowProd products={data} />)
 					}
 				</div>
 			</section>

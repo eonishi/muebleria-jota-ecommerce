@@ -1,20 +1,21 @@
-import { useState, useEffect } from "react"
 import 'src/styles/producto.css'
+import useFetch from "hooks/useFetch"
 
 
 export default function ProductDetail({cart}) {
-  const [product, setProduct] = useState({})
-  useEffect(() => { 
-    const id = window.location.pathname.slice(10)
-    
-    fetch(`/api/productos/${id}`)
-      .then(res => res.json())
-      .then(p => setProduct(p))
-      .catch(e => console.error(e))
-  }, [])
+  const id = window.location.pathname.slice(10)
+  const { data:product, loading, error } = useFetch(`/api/productos/${id}`)
+  
+  if (loading) {
+    return (<div>Cargando...</div>)
+  }
+
+  if (error) {
+    console.log(error)
+    return (<div>Ocurrio un error</div>)
+  }
   
   return (
-    <>
       <section id="detalle-producto" className="detalle-producto">
         <img src={`/assets/${product.imagen}`} alt={product.product_name} />
         <div className="info">
@@ -38,9 +39,7 @@ export default function ProductDetail({cart}) {
                 </p>
               ))
           }
-
         </div>
       </section>
-    </>
   )
 }
