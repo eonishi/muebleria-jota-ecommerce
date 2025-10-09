@@ -1,9 +1,10 @@
 import 'src/styles/producto.css'
 import useFetch from "hooks/useFetch"
+import { useParams } from 'react-router'
 
 
 export default function ProductDetail({cart}) {
-  const id = window.location.pathname.slice(10)
+  const { id } = useParams()
   const { data:product, loading, error } = useFetch(`/api/productos/${id}`)
   
   if (loading) {

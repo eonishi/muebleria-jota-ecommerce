@@ -1,4 +1,5 @@
 import useFetch from "hooks/useFetch"
+import { Link } from "react-router"
 
 export default function ProductosDestacados() {
 	const { data, loading, error } = useFetch('/api/productos')
@@ -33,13 +34,13 @@ function ProdCard({p}) {
 	return (
 		<>
 			<article className='producto'>
-				<a href={"/producto/" + p.id}>
+				<Link to={"/producto/" + p.id}>
 					<img
 						src={`/assets/${p.imagen}`}
 						alt={p.product_name}
 					/>
 					<h2> {p.product_name} </h2>
-				</a>
+				</Link>
 			</article>
 		</>
 	)
