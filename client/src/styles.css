@@ -427,7 +427,7 @@ form textarea {
   box-sizing: border-box;
 }
 
-#mensaje {
+form textarea {
   min-height: 120px;
   max-height: 300px;
   field-sizing: content;
@@ -452,23 +452,26 @@ form textarea:focus {
   background-color: #b68d2f;
 }
 
-#estado {
+.form-group {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.estado {
   min-height: 1rem;
-  margin-top: 1rem;
   margin-bottom: 0;
-  border-radius: 8px;
   font-weight: 500;
   font-family: "Inter", sans-serif;
   text-align: center;
   text-wrap: balance;
 }
 
-#estado.error {
-  display: block;
+.error {
   color: #8c2f1b;
 }
 
-#estado.exito {
+.exito {
   display: block;
   color: #2e7d32;
 }
