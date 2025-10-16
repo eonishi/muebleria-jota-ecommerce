@@ -7,6 +7,7 @@ export default function InputForm({
 	type,
 	error,
 	as,
+	placeholder,
 }) {
 
 
@@ -27,6 +28,7 @@ export default function InputForm({
 					{...field}
 					className={error ? "error" : ""}
 					autoComplete={name}
+					placeholder={placeholder}
 					/>
 				)}
 				/>

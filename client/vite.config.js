@@ -25,7 +25,8 @@ export default defineConfig({
       assets: '/public/assets',
       utils: '/src/utils',
       hooks: '/src/hooks',
-      styles: '/src/styles'
+      styles: '/src/styles',
+      guards: '/src/guards',
     },
   }
 })

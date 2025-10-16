@@ -844,3 +844,15 @@ main {
     display: none;
   }
 }
+
+/* Para navegadores basados en WebKit (Chrome, Safari, Edge, Opera) */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* Opcional, para eliminar cualquier margen residual */
+}
+
+/* Para Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
