@@ -1,9 +1,11 @@
 import 'src/styles/producto.css'
 import useFetch from "hooks/useFetch"
 import { useParams } from 'react-router'
+import { useCartContext } from "context/carrito"
 
 
-export default function ProductDetail({cart}) {
+export default function ProductDetail() {
+  const { addProduct } = useCartContext()
   const { id } = useParams()
   const { data:product, loading, error } = useFetch(`/api/productos/${id}`)
   
@@ -26,7 +28,7 @@ export default function ProductDetail({cart}) {
           <button
             id="add-to-cart"
             className="add-cart-btn"
-            onClick={() => {cart.addProduct(product)}}
+            onClick={() => {addProduct(product)}}
           >
             Añadir al carrito
           </button>

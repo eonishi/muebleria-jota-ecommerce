@@ -1,6 +1,9 @@
 import { NavLink } from "react-router"
+import { useCartContext } from "context/carrito"
 
-export default function NavBar({ cart }) {
+export default function NavBar() {
+	const { quantity } = useCartContext()
+
 	return (
 			<header>
 				<img src="/assets/logo.svg" alt="Logo de la empresa" className='logo' />
@@ -18,7 +21,7 @@ export default function NavBar({ cart }) {
 						<li>
 							<NavLink to={'/carrito'} >
 								<i className='fa-solid fa-cart-shopping'></i>
-								Carrito (<span id='cart-count'>{ cart.quantity }</span>)
+								Carrito (<span id='cart-count'>{ quantity }</span>)
 							</NavLink>
 						</li>
 					</ul>

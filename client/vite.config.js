@@ -27,6 +27,7 @@ export default defineConfig({
       hooks: '/src/hooks',
       styles: '/src/styles',
       guards: '/src/guards',
+      context: '/src/context',
     },
   }
 })

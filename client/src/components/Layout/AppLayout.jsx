@@ -2,10 +2,10 @@ import { Outlet } from "react-router"
 import Footer from "./Footer"
 import NavBar from "./NavBar"
 
-export default function AppLayout({cart}) {
+export default function AppLayout() {
 	return (
 		<>
-      <NavBar cart={cart} />
+      <NavBar />
 			<main>
 				<Outlet />
 			</main>
