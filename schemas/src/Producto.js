@@ -32,5 +32,8 @@ export const NuevoProductoSchema = z.object({
 				acc[item.key] = item.value
 				return acc
 			}, {})
+		})
+		.transform((obj) => {
+			return JSON.stringify(obj)
 		}),
 })

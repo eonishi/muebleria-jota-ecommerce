@@ -33,12 +33,30 @@ export default function NuevoProductoForm() {
 	}, [reset, isSubmitSuccessful])
 
 	function onSubmit(data) {
-		// TODO: Implementar POST a la API
-		console.log(data)
+		const formData = new FormData()
+		for (const key in data) {
+			formData.append(key, data[key])
+		}
+		
+		// console.log(formData)
+		for (const [key, value] of formData.entries()) {
+			console.log(key, value)
+		}
+
+		fetch('/api/productos', {
+			method: 'POST',
+			body: formData,
+		}).then(res => {
+			if (res.ok) {
+				console.log('Producto creado')
+			} else {
+				console.log('Error al crear el producto')
+			}
+		})
 	}
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)} className="">
+		<form onSubmit={handleSubmit(onSubmit)} className="" encType="multipart/form-data">
 			<div className='titulo-container'>
 				<h2>Nuevo Producto</h2>
 			</div>
