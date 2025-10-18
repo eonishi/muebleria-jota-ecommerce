@@ -10,5 +10,6 @@ export function stringifyPrice(price) {
 
 // Para convertir un string de precio (ej "$ 12.345") a number
 export function parsePrice(priceStr) { 
+	if (typeof priceStr === "number") return priceStr // because javascript 🤮
   return parseInt(priceStr.replace(/[^0-9]/g, ""), 10)
 }

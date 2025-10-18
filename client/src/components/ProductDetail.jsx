@@ -2,6 +2,7 @@ import 'src/styles/producto.css'
 import useFetch from "hooks/useFetch"
 import { useParams } from 'react-router'
 import { useCartContext } from "context/carrito"
+import {stringifyPrice} from "utils/currency"
 
 
 export default function ProductDetail() {
@@ -24,7 +25,7 @@ export default function ProductDetail() {
         <div className="info">
           <h1>{product.product_name}</h1>
           <p>{product.description}</p>
-          <p className="precio">{product.price}</p>
+          <p className="precio">{stringifyPrice(product.price)}</p>
           <button
             id="add-to-cart"
             className="add-cart-btn"

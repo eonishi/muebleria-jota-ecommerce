@@ -29,5 +29,8 @@ export default defineConfig({
       guards: '/src/guards',
       context: '/src/context',
     },
-  }
+  },
+  build: {
+    outDir: '../dist',
+  },
 })

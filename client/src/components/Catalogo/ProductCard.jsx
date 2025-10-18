@@ -1,4 +1,5 @@
 import { Link } from "react-router"
+import { stringifyPrice } from "utils/currency"
 
 export default function ProductCard({ producto, addToCart }) {
 
@@ -7,7 +8,7 @@ export default function ProductCard({ producto, addToCart }) {
       <Link to={`/producto/${producto.id}`}>
         <img src={`/assets/${producto.imagen}`} alt={ producto.product_name } />
         <h2>{ producto.product_name }</h2>
-        <p>{ producto.price }</p>
+        <p>{ stringifyPrice(producto.price )}</p>
       </Link>
       <button
         className='btn'
