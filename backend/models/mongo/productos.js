@@ -1,82 +1,72 @@
-import { DB_CONNECTION_STRING } from "../../config.js";
-import { mongoose, Schema } from "mongoose";
+import { DB_CONNECTION_STRING } from "../../config.js"
+import { mongoose, Error as MongooseError } from "mongoose"
+import { AppError } from "../../errors/error.js"
+import { handleConnection } from "./handleConnection.js"
+import { ProductoSchema } from "./schema.js"
 
 // Conexion a la base de datos
-await mongoose.connect(DB_CONNECTION_STRING);
+handleConnection(DB_CONNECTION_STRING)
 
-// Defino el esquema de los productos
-const ProductoSchema = new Schema({
-	product_name:   { type: String, required: true },
-	imagen:         { type: String, required: false },
-	description:    { type: String, required: false },
-	price:          { type: Number, required: true, min: 0 },
-	stock:          { type: Number, required: false, min: 0 },
-	createdAt:      { type: Date, default: Date.now },
-	updatedAt:      { type: Date, default: Date.now },
-  specifications: {
-    type: Object,
-    required: false,
-    set: (v) => {
-      try { return JSON.parse(v) }
-      catch (e) { return v }
-    },
-  },
-}).set('toJSON', { // Formato de los datos al devolverlos
-  transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id.toString()
-    delete returnedObject._id
-    delete returnedObject.__v
-  }
-})
+// Defino el modelo de los productos y sus métodos
+const Producto = mongoose.model("Producto", ProductoSchema)
+export class ProductosModel {
+	static async getAll() {
+		return await Producto.find()
+	}
 
-// Defino el modelo de los productos
-const Producto = mongoose.model('Producto', ProductoSchema)
-export class ProductosModel { 
-  static async getAll() { 
-    try {
-      return await Producto.find()
-    } catch (e) {
-      console.error(e.message)
-      throw new Error(e.message)
+	static async getById({ id }) {
+		if (!mongoose.Types.ObjectId.isValid(id)) {
+			return null
+		}
+		const producto = await Producto.findById(id)
+		return producto
+	}
+
+	static async create(producto) {
+		const newProducto = new Producto(producto)
+		// Validacion y error handler
+		const err = newProducto.validateSync()
+		if (err instanceof MongooseError) {
+			const message = Object.values(err.errors)
+				.map((e) => e.message)
+				.join(". ")
+			throw new AppError(message, 400)
+		}
+
+		return await newProducto.save()
+	}
+
+	static async update({ id, producto }) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return null 
     }
-  }
+    
+		try {
+      const updatedProducto = await Producto.findByIdAndUpdate(id, producto, {
+        new: true,
+        runValidators: true,
+      })
+			return updatedProducto 
+		} catch (err) {
+      if (err instanceof MongooseError) {
+				throw new AppError(err.message, 400)
+      }
+			throw err 
+		}
+	}
 
-  static async getById({ id }) { 
-    try {
-      return await Producto.findById(id)
-    } catch (e) {
-      console.error(e.message)
-      //throw new Error('Error al obtener el producto')
-      return null
+  static async delete({ id }) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return null 
     }
-  }
 
-  static async create(producto) { 
-    try {
-      return await Producto.create(producto)
-    } catch (e) {
-      console.error(e.message)
-      throw new Error(e.message)
-    }
-  }
-
-  static async update({ id, producto }) { 
-    try {
-      return await Producto.findByIdAndUpdate(id, producto, { new: true })
-    } catch (e) {
-      console.error(e.message)
-      //throw new Error('Error al actualizar el producto')
-      return null
-    }
-  }
-
-  static async delete({ id }) { 
-    try {
-      return await Producto.findByIdAndDelete(id)
-    } catch (e) {
-      console.error(e.message)
-      //throw new Error('Error al eliminar el producto')
-      return null
-    }
-  }
+		try {
+			return await Producto.findByIdAndDelete(id)
+		} catch (e) {
+			if (e instanceof MongooseError) {
+				throw new AppError(e.message, 400)
+			}
+			throw e
+		}
+	}
 }
