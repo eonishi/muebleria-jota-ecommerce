@@ -1,8 +1,9 @@
 import 'src/styles/producto.css'
 import useFetch from "hooks/useFetch"
-import { useParams } from 'react-router'
+import { useParams, Link } from 'react-router'
 import { useCartContext } from "context/carrito"
-import {stringifyPrice} from "utils/currency"
+import { stringifyPrice } from "utils/currency"
+import { toast } from 'sonner'
 
 
 export default function ProductDetail() {
@@ -18,10 +19,16 @@ export default function ProductDetail() {
     console.log(error)
     return (<div>Ocurrio un error</div>)
   }
+
+  function handleAddProduct() {
+    addProduct(product)
+    toast.success(`${product?.product_name} agregado al carrito`)
+  }
   
   return (
-      <section id="detalle-producto" className="detalle-producto">
-        <img src={`/assets/${product.imagen}`} alt={product.product_name} />
+    <section id="detalle-producto" className="detalle-producto">
+      <Link to={-1} viewTransition> Back </Link>
+      <img src={`/assets/${product.imagen}`} alt={product.product_name} />
         <div className="info">
           <h1>{product.product_name}</h1>
           <p>{product.description}</p>
@@ -29,7 +36,7 @@ export default function ProductDetail() {
           <button
             id="add-to-cart"
             className="add-cart-btn"
-            onClick={() => {addProduct(product)}}
+            onClick={handleAddProduct}
           >
             Añadir al carrito
           </button>
