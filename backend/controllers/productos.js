@@ -1,46 +1,61 @@
-import { ProductosModel } from '../models/mongo/productos.js'
-import { AppError } from '../errors/error.js'
+import { ProductosModel } from "../models/mongo/productos.js"
+import { AppError } from "../errors/error.js"
+import { normalizeString, shuffle } from "../utils/index.js"
 
 export class ProductosController {
-  static async getAll(req, res, next) {
-    const productos = await ProductosModel.getAll()
-    return res.json(productos)
-  }
+	static async getAll(req, res, next) {
+		let productos = await ProductosModel.getAll()
 
-  static async getById (req, res) {
-    const { id } = req.params
-    const producto = await ProductosModel.getById({ id })
-    if (!producto) {
-      throw new AppError('Producto no encontrado', 404)
+		const { q, r } = req.query
+    if (!q && !r) return res.json(productos)
+    
+    if (r) { productos = shuffle(productos) }
+    
+    if (q) {
+      const normalizedQuery = normalizeString(q.toString()) // me preocupa que no pueda ser un string
+      productos = productos.filter((p) =>
+        normalizeString(p.product_name).includes(normalizedQuery)
+      )
     }
-    return res.json(producto)
-  }
+    
+		setTimeout(() => {
+			res.json(productos)
+		}, 2000)
+		//return res.json(productos)
+	}
 
-  static async create(req, res) {
-    const imageName = req.file?.filename || null // esto es para que guarde el nombre de la imagen
-    const producto = { ...req.body, imagen: imageName }
+	static async getById(req, res) {
+		const { id } = req.params
+		const producto = await ProductosModel.getById({ id })
+		if (!producto) {
+			throw new AppError("Producto no encontrado", 404)
+		}
+		return res.json(producto)
+	}
 
-    const newProducto = await ProductosModel.create(producto)    
-    return res.status(201).json(newProducto)
-  }
+	static async create(req, res) {
+		const imageName = req.file?.filename || null // esto es para que guarde el nombre de la imagen
+		const producto = { ...req.body, imagen: imageName }
 
-  static async update(req, res) {
-    const { id } = req.params
-    const producto = req.body
+		const newProducto = await ProductosModel.create(producto)
+		return res.status(201).json(newProducto)
+	}
 
-    const updatedProducto = await ProductosModel.update({ id, producto })
+	static async update(req, res) {
+		const { id } = req.params
+		const producto = req.body
 
-    if (!updatedProducto)
-      throw new AppError('Producto no encontrado', 404)
+		const updatedProducto = await ProductosModel.update({ id, producto })
 
-    res.status(200).json(updatedProducto)
-  }
+		if (!updatedProducto) throw new AppError("Producto no encontrado", 404)
 
-  static async delete(req, res) {
-    const { id } = req.params
-    const deletedProduct = await ProductosModel.delete({ id })
-    if (!deletedProduct)
-      throw new AppError('Producto no encontrado', 404)
-    res.status(204).send()
-  }
+		res.status(200).json(updatedProducto)
+	}
+
+	static async delete(req, res) {
+		const { id } = req.params
+		const deletedProduct = await ProductosModel.delete({ id })
+		if (!deletedProduct) throw new AppError("Producto no encontrado", 404)
+		res.status(204).send()
+	}
 }
