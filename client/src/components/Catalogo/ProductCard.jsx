@@ -12,7 +12,7 @@ export default function ProductCard({ producto, addToCart }) {
       </Link>
       <button
         className='btn'
-        onClick={() => addToCart(producto)}
+        onClick={addToCart}
       >
         Añadir al carrito
       </button>
