@@ -13,9 +13,9 @@ export default function AppLayout() {
 			<main>
 				<Outlet />
 			</main>
+			</CartProvider>
 			<Toaster />
 			<Footer />
-			</CartProvider>
 		</>
 	)
 }
