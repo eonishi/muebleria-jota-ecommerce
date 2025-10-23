@@ -3,7 +3,7 @@ import { APP_MODE } from "../config.js"
 import { AppError } from "../errors/error.js"
 
 // Dependiendo de si estamos en dev o prod, guardo las imagenes donde el clente pueda accederlas
-let destination = "../client/public/assets/"
+export let destination = "../client/public/assets/"
 if (APP_MODE === "prod") {
 	destination = "../dist/assets/"
 }

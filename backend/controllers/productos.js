@@ -1,6 +1,7 @@
 import { ProductosModel } from "../models/mongo/productos.js"
 import { AppError } from "../errors/error.js"
-import { normalizeString, shuffle } from "../utils/index.js"
+import { normalizeString, shuffle, deleteFile } from "../utils/index.js"
+import { destination } from "../middleware/imageUploader.js" // mejor una variable de entorno(?)
 
 export class ProductosController {
 	static async getAll(req, res, next) {
@@ -18,10 +19,7 @@ export class ProductosController {
       )
     }
     
-		setTimeout(() => {
-			res.json(productos)
-		}, 2000)
-		//return res.json(productos)
+		return res.json(productos)
 	}
 
 	static async getById(req, res) {
@@ -56,6 +54,11 @@ export class ProductosController {
 		const { id } = req.params
 		const deletedProduct = await ProductosModel.delete({ id })
 		if (!deletedProduct) throw new AppError("Producto no encontrado", 404)
+		
+		deleteFile(destination + deletedProduct.imagen)
+
 		res.status(204).send()
 	}
+
+
 }

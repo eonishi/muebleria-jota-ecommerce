@@ -17,7 +17,7 @@ export default function ProductDetail() {
 
 	if (error) {
 		console.log(error)
-		return <div>Ocurrio un error</div>
+		return navigate("/404")
 	}
 
 	function handleAddProduct() {
