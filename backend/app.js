@@ -5,6 +5,8 @@ import { apiRouter } from './routes/api.js'
 import { clientRouter } from './routes/client.js'
 import { globalErrorHandler } from './middleware/globalErrorHandler.js'
 import { limiter } from './middleware/rateLimit.js'
+import compression from 'compression'
+
 
 const app = express()
 
@@ -15,6 +17,7 @@ const PORT = process.env.PORT ?? 3000
 app.use(morgan('tiny'))
 app.use(cors())
 app.use(limiter)
+app.use(compression())
 
 // Endpoints de la api
 app.use('/api', apiRouter)
