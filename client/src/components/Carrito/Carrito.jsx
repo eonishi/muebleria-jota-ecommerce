@@ -1,23 +1,32 @@
 import ProductInCart from './ProductInCart'
 import PrecioTotal from './PrecioTotal'
+import { useCartContext } from "context/carrito"
 
-export default function Carrito({ cart }) {
+export default function Carrito() {
+  const {
+    items,
+    totalPrice,
+    increaseProduct,
+    decreaseProduct,
+    removeProduct
+  } = useCartContext()
+
 	return (
 		<>
 			<h1>Carrito</h1>
       <ul id='carrito-container'>
-        {cart.items.length ?
-          cart.items.map(prod => <ProductInCart
+        {items.length ?
+          items.map(prod => <ProductInCart
             key={prod.id}
             p={prod}
             changes={{
-              onIncrease: () => cart.increaseProduct(prod.id),
-              onDecrease: () => cart.decreaseProduct(prod.id),
-              onRemove: () => cart.removeProduct(prod.id)
+              onIncrease: () => increaseProduct(prod.id),
+              onDecrease: () => decreaseProduct(prod.id),
+              onRemove: () => removeProduct(prod.id)
             }} />)
           : ""}
       </ul>
-      {cart.totalPrice > 0 ? <PrecioTotal total={cart.totalPrice} /> : "" }
+      {totalPrice > 0 ? <PrecioTotal total={totalPrice} /> : "" }
 		</>
 	)
 }

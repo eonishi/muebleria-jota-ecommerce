@@ -1,16 +1,18 @@
+import { Link } from "react-router"
+import { stringifyPrice } from "utils/currency"
 
 export default function ProductCard({ producto, addToCart }) {
 
   return (
     <article className='producto'>
-      <a href={`/producto/${producto.id}`}>
+      <Link to={`/producto/${producto.id}`}>
         <img src={`/assets/${producto.imagen}`} alt={ producto.product_name } />
         <h2>{ producto.product_name }</h2>
-        <p>{ producto.price }</p>
-      </a>
+        <p>{ stringifyPrice(producto.price )}</p>
+      </Link>
       <button
         className='btn'
-        onClick={() => addToCart(producto)}
+        onClick={addToCart}
       >
         Añadir al carrito
       </button>

@@ -1,5 +1,6 @@
 import HeroBanner from "./HeroBanner";
-import ProductosDestacados from "./ProductosDestacados";
+import { lazy } from "react";
+const ProductosDestacados = lazy(() => import("./ProductosDestacados"))
 
 export default function Home() { 
   return (

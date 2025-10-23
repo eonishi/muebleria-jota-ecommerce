@@ -3,6 +3,9 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+main {
+  min-height: 100vh;
+}
 
 header {
   background: #f5e6d3;
@@ -427,7 +430,7 @@ form textarea {
   box-sizing: border-box;
 }
 
-#mensaje {
+form textarea {
   min-height: 120px;
   max-height: 300px;
   field-sizing: content;
@@ -452,23 +455,26 @@ form textarea:focus {
   background-color: #b68d2f;
 }
 
-#estado {
+.form-group {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.estado {
   min-height: 1rem;
-  margin-top: 1rem;
   margin-bottom: 0;
-  border-radius: 8px;
   font-weight: 500;
   font-family: "Inter", sans-serif;
   text-align: center;
   text-wrap: balance;
 }
 
-#estado.error {
-  display: block;
+.error {
   color: #8c2f1b;
 }
 
-#estado.exito {
+.exito {
   display: block;
   color: #2e7d32;
 }
@@ -840,4 +846,38 @@ main {
   .carrito-item .borrar {
     display: none;
   }
+}
+
+/* Para navegadores basados en WebKit (Chrome, Safari, Edge, Opera) */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* Opcional, para eliminar cualquier margen residual */
+}
+
+/* Para Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
 }

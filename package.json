@@ -5,7 +5,8 @@
   "private": true,
   "workspaces": [
     "client",
-    "backend"
+    "backend",
+    "schemas"
   ],
   "scripts": {
     "dev": "concurrently 'npm run back' 'npm run client'",
@@ -33,5 +34,8 @@
     "extends": [
       "standard"
     ]
+  },
+  "dependencies": {
+    "zod": "^4.1.12"
   }
 }
