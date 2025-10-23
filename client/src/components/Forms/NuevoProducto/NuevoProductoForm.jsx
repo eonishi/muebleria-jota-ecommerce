@@ -5,6 +5,7 @@ import InputForm from "../InputForm"
 import ImageDropZone from "./ImageDropZone"
 import { useEffect } from "react"
 import SpecificationsField from "./SpecificationsField"
+import { toast } from "sonner"
 
 export default function NuevoProductoForm() {
 	const {
@@ -28,6 +29,7 @@ export default function NuevoProductoForm() {
 
 	useEffect(() => { 
 		if (isSubmitSuccessful) {
+			toast.success("Producto creado con éxito")
 			reset()
 		}
 	}, [reset, isSubmitSuccessful])
@@ -38,19 +40,12 @@ export default function NuevoProductoForm() {
 			formData.append(key, data[key])
 		}
 		
-		// console.log(formData)
-		for (const [key, value] of formData.entries()) {
-			console.log(key, value)
-		}
-
 		fetch('/api/productos', {
 			method: 'POST',
 			body: formData,
 		}).then(res => {
-			if (res.ok) {
-				console.log('Producto creado')
-			} else {
-				console.log('Error al crear el producto')
+			if (!res.ok) {
+				toast.error('Error al crear el producto')
 			}
 		})
 	}
