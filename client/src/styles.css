@@ -9,19 +9,31 @@
 	--color-accent: #87a96b; /* acento de sustentabilidad */
 	--color-bg-100: #f5e6d3; /* fondos, fotografia*/
 	--color-fg-100: #f5e5d7;
-	--color-bg-gradient-primary: linear-gradient(
-		10deg,
-		rgb(255, 255, 255) 25%,
-		var(--color-bg-primary)
-	);
 	--color-detail: #d4a437; /* detalles premium */
+  --color-detail-200: #e9ae24; /* detalles premium */
 	--color-accent-700: #c47a6d; /* acentos suaves */
 
 	--color-home-100: #111111;
 	--color-test: #fdfdf5;
 
-	--font-title: "Playfair Display", "Georgia", "Times New Roman", Times, serif;
-	--font-body: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	--font-title: "PlayfairDisplay", "Playfair Display", "Georgia", "Times New Roman", Times, serif; /*Pongo el nombre con typo para verificar que uso la font*/
+	--font-body: "Interr", "Inter", "Helvetica Neue", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;/*Pongo el nombre con typo para verificar que uso la font*/
+
+  --animate-slideUp: slideUp 250ms ease-in ;
+}
+
+@font-face {
+  font-family: "PlayfairDisplay"; /*Pongo el nombre con typo para verificar que uso la font*/
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("/fonts/Playfair/PlayfairDisplay-VariableFont_wght.woff2") format("truetype");
+}
+@font-face {
+  font-family: "Interr"; /*Pongo el nombre con typo para verificar que uso la font*/
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/Inter/Inter-VariableFont_opsz,wght.woff2") format("woff2");
+
 }
 
 header {
@@ -40,6 +52,16 @@ header {
 a.active {
 	/* Tengo que poner aca el a.active porque no me reconoce el inline con tailwind 😿*/
 	@apply md:after:w-full;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translate3d(0, 10px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 /*
