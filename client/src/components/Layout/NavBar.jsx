@@ -18,15 +18,21 @@ export default function NavBar() {
 		setIsOpen(!isOpen)
 		isOpen ? allowScroll() : blockScroll()
 	}
+	function closeMenuInNavigate() {
+		if (isOpen) {
+			setIsOpen(false)
+			allowScroll()
+		}
+	}
 
 	return (
 		<header
-			className='md:sticky md:top-0 flex items-center justify-between w-auto md:h-25 max-h-25
-				md:px-5 bg-transparent backdrop-blur-sm
+			className='md:fixed md:w-full md:top-0 flex items-center justify-between md:h-25 max-h-25
+				md:px-5 bg-transparent backdrop-blur-sm z-20
 				font-semibold text-sm font-body text-home-100'
 		>
 			<div
-				className={`absolute h-screen w-screen z-20 bg-black/50 inset-0 ${
+				className={`absolute h-screen w-screen z-30 bg-black/50 inset-0 ${
 					isOpen ? "block" : "hidden"
 				}`}
 			></div>
@@ -45,7 +51,7 @@ export default function NavBar() {
 
 			<nav
 				className={`fixed inset-y-0 left-0 h-screen shadow-xl md:shadow-none md:h-full
-				md:static md:w-auto bg-neutral-50 md:bg-transparent z-30 md:flex md:justify-center md:items-center
+				md:static md:w-auto bg-neutral-50 md:bg-transparent z-40 md:flex md:justify-center md:items-center
 				transition-all transition-discrete ${isOpen ? "w-3/4" : "w-0"}`}
 			>
 				<ul
@@ -61,7 +67,7 @@ export default function NavBar() {
 							<Image src='/assets/icons/xmark.svg' alt="close icon" layout="fixed"/>
 						</button>
 					</li>
-					<AnimatedNavLi to='/' toggleMenu={toggleMenu}>
+					<AnimatedNavLi to='/' toggleMenu={closeMenuInNavigate}>
 						<Image
 							src='/assets/icons/home-simple.svg'
 							alt='home icon'
@@ -70,7 +76,7 @@ export default function NavBar() {
 						/>
 						INICIO
 					</AnimatedNavLi>
-					<AnimatedNavLi to='/catalogo' toggleMenu={toggleMenu}>
+					<AnimatedNavLi to='/catalogo' toggleMenu={closeMenuInNavigate}>
 						<Image
 							src='/assets/icons/sofa.svg'
 							alt='sofa icon'
@@ -79,7 +85,7 @@ export default function NavBar() {
 						/>
 						CATALOGO
 					</AnimatedNavLi>
-					<AnimatedNavLi to='/contacto' toggleMenu={toggleMenu}>
+					<AnimatedNavLi to='/contacto' toggleMenu={closeMenuInNavigate}>
 						<Image
 							src='/assets/icons/forward-message.svg'
 							alt='contact icon'
