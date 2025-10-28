@@ -1,6 +1,6 @@
 import useFetch from "hooks/useFetch.jsx"
 import Buscador from "./Buscador"
-import ProductCard from "./ProductCard.jsx"
+import ProductCard from "components/ui/ProductCard.jsx"
 import { useCartContext} from "context/carrito"
 import { toast } from "sonner"
 import FadeInGrid from "./FadeInGrid.jsx"

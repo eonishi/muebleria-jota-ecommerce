@@ -1,4 +1,3 @@
-import "src/styles/producto.css"
 import useFetch from "hooks/useFetch"
 import { useParams, Link, useNavigate } from "react-router"
 import { useCartContext } from "context/carrito"
