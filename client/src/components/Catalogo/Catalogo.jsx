@@ -2,7 +2,6 @@ import useFetch from "hooks/useFetch.jsx"
 import Buscador from "./Buscador"
 import ProductCard from "components/ui/ProductCard.jsx"
 import { useCartContext} from "context/carrito"
-import { toast } from "sonner"
 import FadeInGrid from "./FadeInGrid.jsx"
 import { useSearchParams } from "react-router"
 import { useDebounce } from "@uidotdev/usehooks"
@@ -17,11 +16,6 @@ export default function Catalogo() {
 	if (error) {
 		console.log(error)
 		return <p>Lo sentimos hubo un error, vuelva pronto</p>
-	}
-
-	function handlerAddToCart(producto) {
-		addProduct(producto)
-		toast.success("Producto agregado al carrito")
 	}
 
 	return (
@@ -39,7 +33,7 @@ export default function Catalogo() {
 								<ProductCard
 									key={p.id}
                 producto={p}
-                addToCart={() => handlerAddToCart(p)}
+                addToCart={() => addProduct(p)}
 								/>
 						))
 					)}

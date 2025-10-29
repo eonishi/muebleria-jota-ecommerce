@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { parsePrice } from "utils/currency";
+import { toast } from "sonner";
 
 export default function useCart() {
   let carritoInStorage
@@ -33,6 +34,10 @@ export default function useCart() {
     } else {
       changeCart(cart => [...cart, {...product, cantidad: 1}])
     }
+
+    toast.success(`${product?.product_name} agregado al carrito.`, {
+      className: "flex justify-start items-center font-body",
+    })
   }
 
   function removeProduct(productId) { 
