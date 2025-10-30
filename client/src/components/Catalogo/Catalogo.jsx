@@ -1,5 +1,6 @@
 import useFetch from "hooks/useFetch.jsx"
 import Buscador from "./Buscador"
+import FilterBar from "./FilterBar.jsx"
 import ProductCard from "components/ui/ProductCard.jsx"
 import { useCartContext} from "context/carrito"
 import FadeInGrid from "./FadeInGrid.jsx"
@@ -24,7 +25,9 @@ export default function Catalogo() {
 				<div className='titulo-container'>
 					<h2 className='catalogo-titulo'>Productos</h2>
 				</div>
-				<Buscador setSearch={setSearchParams}/>
+				<FilterBar>
+					<Buscador setSearch={setSearchParams}/>
+				</FilterBar>
 				<FadeInGrid>
 					{loading ? (
 						<p>Buscando productos...</p>
