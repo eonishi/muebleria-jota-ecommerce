@@ -14,18 +14,18 @@ export default function ProductosDestacados() {
 
 	return (
 		<Suspense>
-			<section className='flex flex-col justify-center items-center'>
-				<h3 className='text-4xl font-semibold  font-title tracking-wider text-primary p-5 text-center'>
+			<section className='flex flex-col justify-center items-center mx-auto overflow-hidden max-w-350'>
+				<h3 className='text-4xl font-semibold  font-title tracking-wider text-primary p-5 text-center text-balance'>
 					Selección para ti
 				</h3>
 				<p className="pb-10 text-pretty font-body font-light text-center text-home-100/60">
 					Cada pieza pensada para darle vida a tu hogar.
 				</p>
-				<div className='flex justify-center items-center flex-wrap gap-5'>
+				<div className='grid grid-cols-(--auto-colums) w-full gap-10 px-10'>
 					{loading ? (
 						<div>Cargando</div>
 					) : (
-						data.slice(0, 3).map((p) => (
+						data.slice(0, 4).map((p) => (
 							<ProductCard
 								producto={p}
 								key={p.id}

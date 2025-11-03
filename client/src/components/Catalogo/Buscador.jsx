@@ -1,6 +1,6 @@
 export default function Buscador({ setSearch }) {
 	return (
-		<label className='md:w-full md:max-w-full md:flex hidden'>
+		<label className='md:w-full md:max-w-full md:flex hidden cursor-text'>
 			<input
 				type='text'
 				name='buscador'

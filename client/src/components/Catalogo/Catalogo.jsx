@@ -20,10 +20,9 @@ export default function Catalogo() {
 	}
 
 	return (
-		<>
-			<section className='catalogo-box'>
-				<div className='titulo-container'>
-					<h2 className='catalogo-titulo'>Productos</h2>
+			<section className='max-w-350 md:mt-25 mx-auto gap-5 flex flex-col items-center justify-center px-5'>
+				<div className='w-full flex justify-center p-7'>
+					<h2 className='text-center font-title text-primary md:text-7xl text-5xl font-medium tracking-wider'> Productos </h2>
 				</div>
 				<FilterBar>
 					<Buscador setSearch={setSearchParams}/>
@@ -42,6 +41,5 @@ export default function Catalogo() {
 					)}
 				</FadeInGrid>
 			</section>
-		</>
 	)
 }

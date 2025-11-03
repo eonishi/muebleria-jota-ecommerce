@@ -7,13 +7,14 @@ export default function ProductCard({ producto, addToCart }) {
 	const productUrl = `/producto/${producto.id}`
 
 	return (
-		<article className='flex flex-col gap-2 justify-between items-start'>
-      <div className='group flex items-center justify-center 
-        relative aspect-100/103 w-80 h-auto bg-neutral-100 overflow-hidden
+		<article className='flex flex-col gap-2 justify-between items-start w-full h-auto'>
+			<div
+				className='group flex items-center justify-center
+        relative aspect-100/110 h-auto w-full bg-neutral-100 overflow-hidden
         after:bg-linear-to-t after:size-full after:absolute
         after:bottom-0 after:from-bg-100 after:to-transparent
-        after:to-30% after:transition-opacity after:opacity-0 hover:after:opacity-100 ' 
-      >
+        after:to-30% after:transition-opacity after:opacity-0 hover:after:opacity-100 '
+			>
 				<Link
 					to={productUrl}
 					className='z-10'
@@ -22,7 +23,7 @@ export default function ProductCard({ producto, addToCart }) {
 						src={`/assets/${producto.imagen}`}
 						alt={producto.product_name}
 						layout='fixed'
-						className='object-cover h-75 w-auto'
+						className='object-cover h-70 w-auto'
 					/>
 				</Link>
 				<AddCartButton onClick={addToCart} />

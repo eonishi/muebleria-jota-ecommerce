@@ -20,6 +20,8 @@
 	--font-body: "Interr", "Inter", "Helvetica Neue", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;/*Pongo el nombre con typo para verificar que uso la font*/
 
   --animate-slideUp: slideUp 250ms ease-in ;
+
+  --auto-colums: repeat(auto-fit, minmax(300px, 1fr))
 }
 
 @font-face {
@@ -328,7 +330,7 @@ h2 {
 }
   */
 /* -------- Footer -------- */
-/*
+
 .footer {
   background: #a0522d;
   color: #ffffff;
@@ -407,6 +409,8 @@ h2 {
   margin: 0;
   padding: 0;
 }
+
+.footer-contacto li {
   display: flex;
   align-items: flex-start;
   gap: 12px;
@@ -445,9 +449,9 @@ h2 {
 .footer-contacto a:hover {
   text-decoration: underline;
 }
-*/
+
 /* ----- RESPONSIVE ----- */
-/*
+
 @media (max-width: 900px) {
   .footer-row {
     grid-template-columns: 1fr;
