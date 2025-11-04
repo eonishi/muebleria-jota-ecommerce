@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { NuevoProductoSchema } from "@muebleria-jota/schemas"
+import { NuevoProductoSchema } from "schemas"
 import InputForm from "../InputForm"
 import ImageDropZone from "./ImageDropZone"
 import { useEffect } from "react"

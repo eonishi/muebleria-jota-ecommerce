@@ -31,6 +31,7 @@ export default defineConfig({
       guards: '/src/guards',
       context: '/src/context',
       icons: '/src/icons',
+      schemas: '/src/schemas/index.js',
     },
   },
   build: {

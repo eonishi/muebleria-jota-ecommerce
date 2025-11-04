@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import InputForm from "./InputForm"
-import { ContactoSchema } from "@muebleria-jota/schemas"
+import { ContactoSchema } from "schemas"
 import { useEffect } from "react"
 
 export default function ContactoForm() {
