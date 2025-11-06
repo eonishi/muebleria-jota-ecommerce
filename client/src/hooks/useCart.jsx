@@ -28,11 +28,11 @@ export default function useCart() {
     commitNewCart(newCart)
   }
 
-  function addProduct(product) { 
+  function addProduct(product, amount=1) { 
     if (cart.some(p => p.id === product.id)) {
-      increaseProduct(product.id)
+      increaseProduct(product.id, amount)
     } else {
-      changeCart(cart => [...cart, {...product, cantidad: 1}])
+      changeCart(cart => [...cart, {...product, cantidad: amount}])
     }
 
     toast.success(`${product?.product_name} agregado al carrito.`, {
@@ -56,8 +56,8 @@ export default function useCart() {
     })
   }
 
-  function increaseProduct(productId) { 
-    changeProductInCart(productId, p => ({...p, cantidad: ++p.cantidad}))
+  function increaseProduct(productId, amount) { 
+    changeProductInCart(productId, p => ({...p, cantidad: p.cantidad + amount}))
   }
   function decreaseProduct(productId) { 
     changeProductInCart(productId, p => ({...p, cantidad: --p.cantidad}))
