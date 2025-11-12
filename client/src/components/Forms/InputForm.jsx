@@ -14,7 +14,7 @@ export default function InputForm({
 	return (
 		<div className={`${className}`}>
 			<label className='grid grid-cols-2 gap-2 tracking-wide font-normal text-home-100'>
-				{label}
+				<p className="col-span-2">{label}</p>
 				{error? " " : ""}
 				<Controller
 					name={name}
@@ -26,7 +26,7 @@ export default function InputForm({
 							type={type}
 							{...field}
 							className={`transition-border col-span-2 border bg-neutral-100/50 p-3 text-start 
-								field-sizing-content resize-none overflow-hidden
+								field-sizing-content resize-none overflow-hidden default-button-none
 							focus:bg-bg-100/20 focus:outline-accent-700 ${error? "border-red-700 bg-red-100/50" : "border-neutral-200"}
 								focus:outline-1 placeholder:italic placeholder:text-home-100/30 transition-colors duration-300`}
 							autoComplete={name}

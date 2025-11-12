@@ -20,7 +20,7 @@ export default function ImageDropZone({ control, errors, name }) {
         });
 
         return (
-					<div className='image-container'>
+					<div className='image-container justify-self-center'>
 						{field.value && (
 							<>
 								<img
