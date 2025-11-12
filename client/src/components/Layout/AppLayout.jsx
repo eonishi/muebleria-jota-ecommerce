@@ -10,7 +10,7 @@ export default function AppLayout() {
 			<CartProvider>
 
       <NavBar />
-			<main>
+			<main className="grow min-h-dvh">
 				<Outlet />
 			</main>
 			</CartProvider>
