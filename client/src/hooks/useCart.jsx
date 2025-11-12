@@ -56,11 +56,19 @@ export default function useCart() {
     })
   }
 
-  function increaseProduct(productId, amount) { 
-    changeProductInCart(productId, p => ({...p, cantidad: p.cantidad + amount}))
+  function increaseProduct(productId) { 
+    changeProductInCart(productId, p => ({...p, cantidad: ++p.cantidad}))
   }
   function decreaseProduct(productId) { 
     changeProductInCart(productId, p => ({...p, cantidad: --p.cantidad}))
+  }
+
+  function clearCart() { 
+    commitNewCart([])
+  }
+
+  function changeProductAmount(productId, amount) {
+    changeProductInCart(productId, p => ({...p, cantidad: amount}))
   }
 
   useEffect(() => { 
@@ -76,6 +84,8 @@ export default function useCart() {
     removeProduct,
     increaseProduct,
     decreaseProduct,
+    changeProductAmount,
+    clearCart,
     totalPrice,
     quantity
   }
