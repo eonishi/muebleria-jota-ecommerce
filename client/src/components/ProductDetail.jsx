@@ -9,6 +9,7 @@ import InfoTable from "components/ui/InfoTable"
 import ProductosDestacados from "components/Home/ProductosDestacados"
 import RatingStar from "components/ui/RatingStar"
 import ReviewList from "components/ui/ReviewList"
+import Separator from "components/ui/Separator"
 
 export default function ProductDetail() {
 	const [count, setCount] = useState(1)
@@ -47,7 +48,7 @@ export default function ProductDetail() {
 		<section className='max-w-350 md:mt-30 mx-auto text-home-100 font-body'>
 			<div className='grid grid-cols-1 lg:grid-cols-2 '>
 				<div className='lg:relative lg:size-full col-span-2 lg:col-span-1 p-5'>
-					<div className='lg:sticky lg:top-0 bg-neutral-100 shadow-lg '>
+					<div className='lg:sticky lg:top-0 bg-neutral-100 shadow-lg'>
 						<div className='relative'>
 							{product.discount && (
 								<span className='absolute top-5 left-5 bg-accent px-5 py-2 text-center text-neutral-50'>
@@ -81,7 +82,8 @@ export default function ProductDetail() {
 					<div className='flex gap-10 flex-wrap  items-center justify-start w-full sm:w-fit'>
 						<Contador
 							count={count}
-							setCount={setCount}
+							onIncrease={() => setCount(count + 1)}
+							onDecrease={() => setCount(count - 1)}
 						/>
 						<button
 							type='button'
@@ -103,13 +105,13 @@ export default function ProductDetail() {
 					</button>
 					</div>
 
-					<span className='w-full h-px my-10 bg-accent-700/50' />
+					<Separator />
 					<div className='w-full flex flex-col gap-3'>
 						<h3 className='font-medium text-xl'>Especificaciones</h3>
 						<InfoTable data={product.specifications} />
 					</div>
 
-					<span className='w-full h-px my-10 bg-accent-700/50' />
+					<Separator />
 
 					<div className='w-full flex flex-col gap-3'>
 						<h3 className='font-medium text-xl'>Opiniones del producto</h3>
@@ -117,7 +119,7 @@ export default function ProductDetail() {
 					</div>
 				</div>
 
-				<span className='w-full col-span-2 h-px my-10 bg-accent-700/50' />
+				<Separator className="col-span-2"/>
 			</div>
 
 		</section>
