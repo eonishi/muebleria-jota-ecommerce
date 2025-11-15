@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { NavLink } from "react-router"
 import { useCartContext } from "context/carrito"
 import { Image } from "@unpic/react"
@@ -6,128 +6,103 @@ import IconWithNumber from "./IconWithNumber"
 import AnimatedNavLi from "./AnimatedLi"
 import AnimatedIconLi from "./AnimatedIconLi"
 import MenuButton from "./MenuButton"
-import useScrollBlock from "hooks/useScrollBlock"
-
+import AsideMenu from "./AsideMenu"
+import PortalToBody from "components/ui/PortalToBody"
+import { useWindowSize } from "@uidotdev/usehooks"
 
 export default function NavBar() {
-	const { quantity } = useCartContext()
-	const [isOpen, setIsOpen] = useState(false)
-	const [blockScroll, allowScroll] = useScrollBlock()
+  const { quantity } = useCartContext()
+  const [isOpen, setIsOpen] = useState(false)
+  const size = useWindowSize()
 
-	function toggleMenu() {
-		setIsOpen(!isOpen)
-		isOpen ? allowScroll() : blockScroll()
-	}
-	function closeMenuInNavigate() {
-		if (isOpen) {
-			setIsOpen(false)
-			allowScroll()
-		}
-	}
+  function toggleMenu() {
+    setIsOpen(!isOpen)
+  }
+  function closeMenu() {
+    setIsOpen(false)
+  }
 
-	return (
-		<header
-			className='md:fixed md:w-full md:top-0 flex items-center justify-between md:h-25 max-h-25
-				md:px-5 bg-transparent backdrop-blur-sm z-20
+  // Si hay un resize de la ventana con el menu lateral abierto se cierra automaticamente
+  useEffect(() => {
+    // 768px is 'md:' in taildwindcss
+    if (size.width >= 768) {
+      setIsOpen(false)
+    }
+  }, [isOpen, size.width])
+
+  return (
+    <header
+      className='md:fixed md:w-full md:top-0 flex items-center justify-between md:h-25 max-h-25
+				md:px-5 bg-transparent backdrop-blur-sm z-10
 				font-semibold text-sm font-body text-home-100'
-		>
-			<div
-				className={`absolute h-screen w-screen z-30 bg-black/50 inset-0 ${
-					isOpen ? "block" : "hidden"
-				}`}
-			></div>
-			<MenuButton toggleMenu={toggleMenu} />
-			<NavLink
-				to='/'
-				className='h-full flex items-center justify-center overflow-hidden hover:scale-105 transition-transform ease-out'
-			>
-				<Image
-					src='/assets/logo.svg'
-					alt='Logo de la empresa'
-					className='h-15 md:h-full object-cover '
-					layout='fixed'
-				/>
-			</NavLink>
+    >
+      <MenuButton toggleMenu={toggleMenu} />
 
-			<nav
-				className={`fixed inset-y-0 left-0 h-screen shadow-xl md:shadow-none md:h-full
-				md:static md:w-auto bg-neutral-50 md:bg-transparent z-40 md:flex md:justify-center md:items-center
-				transition-all transition-discrete ${isOpen ? "w-3/4" : "w-0"}`}
-			>
-				<ul
-					className={`flex-col pb-2 justify-between md:pb-0
-					md:static md:flex md:flex-row md:gap-2 transition-all transition-discrete
-					ease-in ${isOpen ? "flex" : "hidden"}`}
-				>
-					<li className={`w-full flex justify-end items-center bg-linear-to-r from-neutral-200 to-neutral-50 md:hidden`}>
-						<button
-							onClick={toggleMenu}
-							className='p-5'
-						>
-							<Image src='/assets/icons/xmark.svg' alt="close icon" layout="fixed"/>
-						</button>
-					</li>
-					<AnimatedNavLi to='/' toggleMenu={closeMenuInNavigate}>
-						<Image
-							src='/assets/icons/home-simple.svg'
-							alt='home icon'
-							layout='fixed'
-							className='md:hidden transition '
-						/>
-						INICIO
-					</AnimatedNavLi>
-					<AnimatedNavLi to='/catalogo' toggleMenu={closeMenuInNavigate}>
-						<Image
-							src='/assets/icons/sofa.svg'
-							alt='sofa icon'
-							layout='fixed'
-							className='md:hidden transition'
-						/>
-						CATALOGO
-					</AnimatedNavLi>
-					<AnimatedNavLi to='/contacto' toggleMenu={closeMenuInNavigate}>
-						<Image
-							src='/assets/icons/forward-message.svg'
-							alt='contact icon'
-							layout='fixed'
-							className='md:hidden transition'
-						/>
-						CONTACTO
-					</AnimatedNavLi>
-				</ul>
-			</nav>
+      <NavLink
+        to='/'
+        className='h-full flex items-center justify-center overflow-hidden hover:scale-105 transition-transform ease-out'
+      >
+        <Image
+          src='/assets/logo.svg'
+          alt='Logo de la empresa'
+          className='h-15 md:h-full object-cover '
+          layout='fixed'
+        />
+      </NavLink>
 
-			<nav className=''>
-				<ul className='flex items-center justify-center [&>li>a]:p-5'>
-					<AnimatedIconLi
-						to='/login'
-						className='hidden'
-					>
-						<Image
-							src='/assets/icons/user.svg'
-							layout='fixed'
-							alt='user icon'
-						/>
-					</AnimatedIconLi>
-					<AnimatedIconLi className='hidden'>
-						<Image
-							src='/assets/icons/search.svg'
-							layout='fixed'
-							alt='search icon'
-						/>
-					</AnimatedIconLi>
-					<AnimatedIconLi
-						to='/carrito'
-						className='flex'
-					>
-						<IconWithNumber
-							src='/assets/icons/cart.svg'
-							alt='cart icon'
-							number={quantity}
-						/>
-					</AnimatedIconLi>
-				</ul>
-			</nav>
-		</header>
-	)
+      <nav
+        className={`hidden md:shadow-none md:h-full md:static md:w-auto md:flex md:justify-center md:items-center`}
+      >
+        <ul className={`static hidden md:flex flex-row gap-2 justify-between`}>
+          <AnimatedNavLi to='/' >
+            INICIO
+          </AnimatedNavLi>
+          <AnimatedNavLi to='/catalogo' >
+            CATALOGO
+          </AnimatedNavLi>
+          <AnimatedNavLi to='/contacto' >
+            CONTACTO
+          </AnimatedNavLi>
+        </ul>
+      </nav>
+
+      <nav className=''>
+        <ul className='flex items-center justify-center [&>li>a]:p-5'>
+          <AnimatedIconLi
+            to='/login'
+            className='hidden'
+          >
+            <Image
+              src='/assets/icons/user.svg'
+              layout='fixed'
+              alt='user icon'
+            />
+          </AnimatedIconLi>
+          <AnimatedIconLi className='hidden'>
+            <Image
+              src='/assets/icons/search.svg'
+              layout='fixed'
+              alt='search icon'
+            />
+          </AnimatedIconLi>
+          <AnimatedIconLi
+            to='/carrito'
+            className='flex'
+          >
+            <IconWithNumber
+              src='/assets/icons/cart.svg'
+              alt='cart icon'
+              number={quantity}
+            />
+          </AnimatedIconLi>
+        </ul>
+      </nav>
+
+      {isOpen &&
+        <PortalToBody>
+          <AsideMenu closeMenu={closeMenu} />
+        </PortalToBody>
+      }
+    </header>
+  )
 }

@@ -13,11 +13,11 @@ export default function ProductCard({ producto, addToCart }) {
         relative aspect-100/110 h-auto w-full bg-neutral-100 overflow-hidden
         after:bg-linear-to-t after:size-full after:absolute
         after:bottom-0 after:from-bg-100 after:to-transparent
-        after:to-30% after:transition-opacity after:opacity-0 hover:after:opacity-100 '
+        after:to-30% after:transition-opacity after:opacity-0 hover:after:opacity-100'
 			>
 				<Link
 					to={productUrl}
-					className='z-10'
+					className=''
 				>
 					<Image
 						src={`/assets/${producto.imagen}`}
