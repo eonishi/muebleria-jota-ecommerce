@@ -1,37 +1,47 @@
 @import "tailwindcss";
 @import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/utilities.css" layer(utilities);
-@plugin "tailwindcss-motion";
 
 @theme {
-	/* Paleta de colores */
-	--color-primary: #a0522d; /* títulos principales */
-	--color-accent: #87a96b; /* acento de sustentabilidad */
-	--color-bg-100: #f5e6d3; /* fondos, fotografia*/
-	--color-fg-100: #f5e5d7;
-	--color-detail: #d4a437; /* detalles premium */
-  --color-detail-200: #e9ae24; /* detalles premium */
-	--color-accent-700: #c47a6d; /* acentos suaves */
+  /* Paleta de colores */
+  --color-primary: #a0522d;
+  /* títulos principales */
+  --color-accent: #87a96b;
+  /* acento de sustentabilidad */
+  --color-bg-100: #f5e6d3;
+  /* fondos, fotografia*/
+  --color-fg-100: #f5e5d7;
+  --color-detail: #d4a437;
+  /* detalles premium */
+  --color-detail-200: #e9ae24;
+  /* detalles premium */
+  --color-accent-700: #c47a6d;
+  /* acentos suaves */
 
-	--color-home-100: #111111;
-	--color-test: #fdfdf5;
+  --color-home-100: #111111;
+  --color-test: #fdfdf5;
 
-	--font-title: "PlayfairDisplay", "Playfair Display", "Georgia", "Times New Roman", Times, serif; /*Pongo el nombre con typo para verificar que uso la font*/
-	--font-body: "Interr", "Inter", "Helvetica Neue", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;/*Pongo el nombre con typo para verificar que uso la font*/
+  --font-title: "PlayfairDisplay", "Playfair Display", "Georgia", "Times New Roman", Times, serif;
+  /*Pongo el nombre con typo para verificar que uso la font*/
+  --font-body: "Interr", "Inter", "Helvetica Neue", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /*Pongo el nombre con typo para verificar que uso la font*/
 
-  --animate-slideUp: slideUp 250ms ease-in ;
-
+  --animate-slideUp: slideUp 250ms ease-in;
+  --animate-slideRight: slideRight 250ms ease-in both;
   --auto-colums: repeat(auto-fit, minmax(250px, 1fr))
 }
 
 @font-face {
-  font-family: "PlayfairDisplay"; /*Pongo el nombre con typo para verificar que uso la font*/
+  font-family: "PlayfairDisplay";
+  /*Pongo el nombre con typo para verificar que uso la font*/
   font-weight: 400 900;
   font-display: swap;
   src: url("/fonts/Playfair/PlayfairDisplay-VariableFont_wght.woff2") format("truetype");
 }
+
 @font-face {
-  font-family: "Interr"; /*Pongo el nombre con typo para verificar que uso la font*/
+  font-family: "Interr";
+  /*Pongo el nombre con typo para verificar que uso la font*/
   font-weight: 100 900;
   font-display: swap;
   src: url("/fonts/Inter/Inter-VariableFont_opsz,wght.woff2") format("woff2");
@@ -39,9 +49,9 @@
 }
 
 header {
-	animation: adjust-header ease-in both;
-	animation-timeline: scroll();
-	animation-range: 0 200px;
+  animation: adjust-header ease-in both;
+  animation-timeline: scroll();
+  animation-range: 0 200px;
 }
 
 .transition-border:focus {
@@ -50,15 +60,15 @@ header {
 }
 
 @keyframes adjust-header {
-	to {
-		height: calc(var(--spacing) * 18);
-		background-color: oklab(98.5% 0 0);
-	}
+  to {
+    height: calc(var(--spacing) * 18);
+    background-color: oklab(98.5% 0 0);
+  }
 }
 
 a.active {
-	/* Tengo que poner aca el a.active porque no me reconoce el inline con tailwind 😿*/
-	@apply md:after:w-full;
+  /* Tengo que poner aca el a.active porque no me reconoce el inline con tailwind 😿*/
+  @apply md:after:w-full text-primary;
 }
 
 @keyframes slideUp {
@@ -78,6 +88,7 @@ a.active {
   background: #a0522d;
   color: #ffffff;
   padding: 2rem 1.25rem;
+  margin-top: 3rem;
 }
 
 .footer .container {
@@ -133,6 +144,7 @@ a.active {
   color: #ffffff;
   text-decoration: none;
 }
+
 .footer a:hover {
   text-decoration: underline;
 }
@@ -142,11 +154,13 @@ a.active {
   border-top: 1px solid rgba(255, 255, 255, 0.25);
   margin: 1.25rem 0;
 }
+
 .footer .copyright {
   margin: 0;
   font-size: 0.95rem;
   opacity: 0.9;
 }
+
 .footer-contacto {
   list-style: none;
   margin: 0;
@@ -207,28 +221,29 @@ input.default-button-none::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 input.default-button-none[type="number"] {
   -moz-appearance: textfield;
 }
 
 @keyframes fadeInUp {
-	from {
-		transform: translate3d(0, 40px, 0);
-	}
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
 
-	to {
-		transform: translate3d(0, 0, 0);
-		opacity: 1;
-	}
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes fadeInUp {
-	from {
-		transform: translate3d(0, 40px, 0);
-	}
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
 
-	to {
-		transform: translate3d(0, 0, 0);
-		opacity: 1;
-	}
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
 }
