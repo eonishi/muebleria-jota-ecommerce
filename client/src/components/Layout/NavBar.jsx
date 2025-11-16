@@ -33,7 +33,7 @@ export default function NavBar() {
   return (
     <header
       className='md:fixed md:w-full md:top-0 flex items-center justify-between md:h-25 max-h-25
-				md:px-5 bg-transparent backdrop-blur-sm z-10
+				md:px-5 bg-transparent backdrop-blur-sm z-20
 				font-semibold text-sm font-body text-home-100'
     >
       <MenuButton toggleMenu={toggleMenu} />

@@ -28,6 +28,10 @@
 
   --animate-slideUp: slideUp 250ms ease-in;
   --animate-slideRight: slideRight 250ms ease-in both;
+  --animate-toLeft: toLeft 750ms ease-in;
+  --animate-toRight: toRight 750ms ease-in;
+  --animate-toRight-200: toRight 750ms ease-in 300ms both;
+  --animate-fadeIn: fadeIn 500ms eaase-in both;
   --auto-colums: repeat(auto-fit, minmax(250px, 1fr))
 }
 
@@ -81,6 +85,39 @@ a.active {
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes toLeft {
+  from {
+    transform: translate3d(40px, 0, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes toRight {
+  from {
+    transform: translate3d(-40px, 0, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
 
 /* -------- Footer -------- */
 
