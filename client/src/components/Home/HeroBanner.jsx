@@ -1,15 +1,8 @@
 import { Image } from '@unpic/react'
 import { NavLink } from 'react-router'
-import { useWindowSize } from "@uidotdev/usehooks"
-import { useEffect } from 'react'
 import TextRing from '../ui/TextRing/TextRing'
 
 export default function HeroBanner() {
-  const size = useWindowSize()
-  useEffect(() => {
-    console.log("width ", size.width, " height: ", size.height)
-  }, [size])
-
 
   return (
     <section className='lg:pt-25 sm:pt-5 h-screen w-screen bg-bg-100 overflow-hidden flex justify-evenly md:items-center items-start text-home-100 font-body'>
