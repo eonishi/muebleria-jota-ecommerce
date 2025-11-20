@@ -2,6 +2,7 @@ import { Image } from '@unpic/react'
 import { NavLink } from 'react-router'
 import { useWindowSize } from "@uidotdev/usehooks"
 import { useEffect } from 'react'
+import TextRing from '../ui/TextRing/TextRing'
 
 export default function HeroBanner() {
   const size = useWindowSize()
@@ -12,15 +13,16 @@ export default function HeroBanner() {
 
   return (
     <section className='lg:pt-25 sm:pt-5 h-screen w-screen bg-bg-100 overflow-hidden flex justify-evenly md:items-center items-start text-home-100 font-body'>
-      <div className='relative max-w-5/6 max-h-5/6 w-full h-full grid lg:grid-cols-2 grid-cols-1 lg:grid-rows-1 lg:place-content-between place-content-start justify-items-center'>
+      <div className='relative max-w-5/6 max-h-5/6 w-full h-full grid lg:grid-cols-2 grid-cols-1 '>
 
+        {/* TODO: Estaria bueno tener algunos banners intercambiables y que vayan rotando 🤷‍♂️ maybe... */}
         <div className='col-span-1 flex flex-col lg:justify-start justify-center lg:items-start items-center lg:gap-5 gap-1 z-10 md:max-lg:backdrop-blur-xs md:max-lg:w-full'>
           <SpinSticker />
           <Title />
           <CTA />
         </div>
 
-        <div className='col-span-1 place-self-stretch relative animate-toLeft'>
+        <div className='col-span-1 relative animate-toLeft h-full w-full'>
           <BigProductImage />
         </div>
       </div>
@@ -51,8 +53,10 @@ function CTA() {
 
 function SpinSticker() {
   return (
-    <div className='size-25 bg-accent-700 m-5 animate-spin lg:self-end rounded-full'>
-
+    <div className='m-10 lg:self-end text-accent-700 font-body font-bold animate-spin-2000'>
+      <TextRing side={1.1} className="text-xs">
+        Hermanos Jota • Muebleria •&nbsp;
+      </TextRing>
     </div>
   )
 }
@@ -60,14 +64,15 @@ function SpinSticker() {
 function BigProductImage() {
   return (
     <div className='absolute
-        xl:top-30 xl:right-40 xl:scale-200
+        2xl:top-30 2xl:right-40 2xl:scale-200
+        xl:top-10 xl:-right-20 xl:scale-150
         lg:top-100 lg:right-20 lg:scale-350
         md:-top-50
-        sm:scale-150
-        top-5 scale-200
+        sm:scale-150 sm:-top-20
+        -top-25 scale-150
         drop-shadow-sm drop-shadow-black/10'>
-      <Image src='/assets/Sillón Copacabana.webp' alt="" layout='fixed'
-        className='object-cover'
+      <Image src='/assets/hero-banner/copacabana-banner.png' alt="Hero banner del Sillón Copabana"
+        className='object-cover h-full w-full'
       />
     </div>
   )
