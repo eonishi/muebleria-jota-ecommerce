@@ -3,7 +3,6 @@
   width: 100%;
   max-width: 520px;
   aspect-ratio: 1 / 1;
-  /* O 16/9, 4/3, etc., para definir la proporción */
   border-radius: 12px;
   overflow: hidden;
 }
