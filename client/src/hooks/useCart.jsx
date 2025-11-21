@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { parsePrice } from "utils/currency";
+import { toast } from "sonner";
 
 export default function useCart() {
   let carritoInStorage
@@ -27,12 +28,16 @@ export default function useCart() {
     commitNewCart(newCart)
   }
 
-  function addProduct(product) { 
+  function addProduct(product, amount=1) { 
     if (cart.some(p => p.id === product.id)) {
-      increaseProduct(product.id)
+      increaseProduct(product.id, amount)
     } else {
-      changeCart(cart => [...cart, {...product, cantidad: 1}])
+      changeCart(cart => [...cart, {...product, cantidad: amount}])
     }
+
+    toast.success(`${product?.product_name} agregado al carrito.`, {
+      className: "flex justify-start items-center font-body",
+    })
   }
 
   function removeProduct(productId) { 
@@ -58,6 +63,14 @@ export default function useCart() {
     changeProductInCart(productId, p => ({...p, cantidad: --p.cantidad}))
   }
 
+  function clearCart() { 
+    commitNewCart([])
+  }
+
+  function changeProductAmount(productId, amount) {
+    changeProductInCart(productId, p => ({...p, cantidad: amount}))
+  }
+
   useEffect(() => { 
     // Recalcular total cada vez que cambia el carrito
     // Estaria buena que suceda solo cuando tiene que renderizar el total
@@ -71,6 +84,8 @@ export default function useCart() {
     removeProduct,
     increaseProduct,
     decreaseProduct,
+    changeProductAmount,
+    clearCart,
     totalPrice,
     quantity
   }
