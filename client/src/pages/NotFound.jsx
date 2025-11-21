@@ -1,4 +1,4 @@
-export default function NotFound(){
+export function NotFound(){
   return (
     <section style={{
       display: 'flex',

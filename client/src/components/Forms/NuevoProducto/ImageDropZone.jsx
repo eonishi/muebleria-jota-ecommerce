@@ -2,7 +2,7 @@ import { Controller } from "react-hook-form";
 import { Image } from "@unpic/react";
 import { useDropzone } from "react-dropzone";
 import BackgroundImage from "./BackgroundImage";
-import './NuevoProducto.css';
+import './ImageDropZone.css';
 
 export default function ImageDropZone({ control, errors, name }) {
   return (

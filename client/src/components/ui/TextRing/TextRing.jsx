@@ -13,7 +13,7 @@ export default function TextRing({ children, side, className, center = null }) {
       }}
     >
       {CHARS.map((char, index) => (
-        <span style={{ '--index': index }}>
+        <span key={index} style={{ '--index': index }}>
           {char}
         </span>
       ))}

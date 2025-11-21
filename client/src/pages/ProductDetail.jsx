@@ -6,12 +6,11 @@ import { stringifyPrice } from "utils/currency"
 import { Image } from "@unpic/react"
 import Contador from "components/ui/Contador"
 import InfoTable from "components/ui/InfoTable"
-import ProductosDestacados from "components/Home/ProductosDestacados"
 import RatingStar from "components/ui/RatingStar"
 import ReviewList from "components/ui/ReviewList"
 import Separator from "components/ui/Separator"
 
-export default function ProductDetail() {
+export function ProductDetail() {
 	const [count, setCount] = useState(1)
 	const { addProduct } = useCartContext()
 	const { id } = useParams()

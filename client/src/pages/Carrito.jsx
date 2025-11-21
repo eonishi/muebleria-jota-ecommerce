@@ -1,11 +1,10 @@
-import ProductInCart from "./ProductInCart"
-import PrecioTotal from "./PrecioTotal"
+import ProductInCart from "components/Carrito/ProductInCart"
+import PrecioTotal from "components/Carrito/PrecioTotal"
 import { useCartContext } from "context/carrito"
 import Separator from "components/ui/Separator"
 
-export default function Carrito() {
-  const { items, totalPrice, increaseProduct, decreaseProduct, removeProduct } =
-    useCartContext()
+export function Carrito() {
+  const { items, totalPrice, increaseProduct, decreaseProduct, removeProduct } = useCartContext()
 
   // Todo: vista más linda para cuando no haya productos en el carrito 🤷‍♂️
   return (

@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import InputForm from "./InputForm"
+import InputForm from "components/Forms/InputForm"
 import { ContactoSchema } from "schemas"
 import { useEffect } from "react"
 
-export default function ContactoForm() {
+export function Contacto() {
 	const {
 		control,
 		reset,

@@ -1,14 +1,14 @@
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { NuevoProductoSchema } from "schemas"
-import InputForm from "../InputForm"
-import ImageDropZone from "./ImageDropZone"
+import InputForm from "components/Forms/InputForm"
+import ImageDropZone from "components/Forms/NuevoProducto/ImageDropZone"
 import { useEffect } from "react"
-import SpecificationsField from "./SpecificationsField"
+import SpecificationsField from "components/Forms/NuevoProducto/SpecificationsField"
 import { toast } from "sonner"
 import Separator from "components/ui/Separator"
 
-export default function NuevoProductoForm() {
+export function NuevoProducto() {
 	const {
 		control,
 		reset,

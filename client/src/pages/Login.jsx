@@ -1,6 +1,6 @@
 import { Navigate } from "react-router"
 
-export default function Login() {
+export function Login() {
   return (
     // TODO: Implementar login
     <Navigate to="/" replace />

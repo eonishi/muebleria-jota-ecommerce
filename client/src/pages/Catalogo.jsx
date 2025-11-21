@@ -1,13 +1,13 @@
 import useFetch from "hooks/useFetch.jsx"
-import Buscador from "./Buscador"
-import FilterBar from "./FilterBar.jsx"
+import Buscador from "components/Catalogo/Buscador"
+import FilterBar from "components/Catalogo/FilterBar.jsx"
 import ProductCard from "components/ui/ProductCard.jsx"
 import { useCartContext } from "context/carrito"
-import FadeInGrid from "./FadeInGrid.jsx"
+import FadeInGrid from "components/ui/FadeInGrid.jsx"
 import { useSearchParams } from "react-router"
 import { useDebounce } from "@uidotdev/usehooks"
 
-export default function Catalogo() {
+export function Catalogo() {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const debouncedSearchParams = useDebounce(searchParams, 500)
 	const { data, loading, error } = useFetch(
