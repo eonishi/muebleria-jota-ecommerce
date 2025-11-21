@@ -1,5 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
 
 // Importa la variable de entorno VITE_API_HOST, con valor por defecto si no está definida
 // y la uso en la configuración del proxy
@@ -9,7 +11,7 @@ const { VITE_API_HOST = "http://localhost:3000" } = import.meta;
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   server: {
     proxy: {
       '/api': {
@@ -22,12 +24,15 @@ export default defineConfig({
     alias: {
       src: '/src',
       components: '/src/components',
+      pages: '/src/pages/index.js',
       assets: '/public/assets',
       utils: '/src/utils',
       hooks: '/src/hooks',
       styles: '/src/styles',
       guards: '/src/guards',
       context: '/src/context',
+      icons: '/src/icons',
+      schemas: '/src/schemas/index.js',
     },
   },
   build: {
