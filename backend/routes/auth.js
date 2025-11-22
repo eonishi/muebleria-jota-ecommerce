@@ -1,7 +1,7 @@
 import { AuthController } from "../controllers/auth.js"
-import { Routes } from "express"
+import { Router } from "express"
 
-export const authRouter = Routes()
+export const authRouter = Router()
 
 authRouter.post("/login", AuthController.login)
 authRouter.post("/register", AuthController.register)

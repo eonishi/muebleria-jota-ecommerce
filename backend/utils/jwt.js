@@ -1,11 +1,11 @@
-import jwt from "jsonwebtokene"
-import { JWT_SECRET } from "../config"
+import jwt from "jsonwebtoken"
+import { JWT_SECRET } from "../config.js"
 
 export function generateToken(payload) {
-	return jwt.sign(payload, JWT_SECRET, { expiredIn: "1d" })
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: '2d' })
 }
 
 
-export function verifyTokent(token) {
-	return jwt.verify(token, JWT_SECRET)
+export function verifyToken(token) {
+  return jwt.verify(token, JWT_SECRET)
 }

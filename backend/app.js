@@ -33,5 +33,5 @@ app.use(globalErrorHandler)
 
 // Inicio del servidor
 app.listen(PORT, () => {
-	console.log(`Server listening on port ${PORT}`)
+  console.log(`Server listening on port ${PORT}`)
 })
