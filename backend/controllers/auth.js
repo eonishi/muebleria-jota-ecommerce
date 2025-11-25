@@ -1,10 +1,28 @@
 import { UserModel } from "../models/mongo/user.js"
 import { AppError } from "../errors/error.js"
 import bcrypt from "bcrypt"
-import { generateToken } from "../utils/jwt.js"
+import { generateToken, verifyToken } from "../utils/jwt.js"
 import { APP_MODE } from "../config.js"
 
+const ACCESS_TOKEN_NAME = 'access_token'
+const COOKIE_OPTIONS = {
+  httpOnly: true, // evita el xss
+  secure: APP_MODE === 'prod', // solo por https (en prod)
+  sameSite: 'strict', // la cookie funciona exclusivamente en mi dominio
+  maxAge: 1000 * 60 * 60 * 24 * 2, // 2 dias. Es redundante ya que igualmente la validez del token esta limitada temporalmente.
+}
+
 export class AuthController {
+  static async verify(req, res) {
+    // La idea es verificar si el token es valido
+    // y devolver lo información que hay en el payload del token.
+
+
+    // Envio directamente la infomarción de req.user porque el middleware 'permission'
+    // deberia encargarse de gestionar los edge cases y adjuntar el user a la req.
+    return res.status(200).json(req.user)
+  }
+
   static async register(req, res) {
     const user = { ...req.body }
 
@@ -17,29 +35,28 @@ export class AuthController {
       id: newUser.id,
       message: "Usuario creado con éxito!"
     })
-
   }
 
   static async login(req, res) {
-    const { email, password } = req.body
+    const { email, password } = { ...req.body }
     if (!email || !password) throw new AppError("toda la información es requerida", 400)
 
     const validUser = await UserModel.getByEmail(email)
-    if (!validUser) throw new AppError("credenciales inválidas", 400)
+    if (!validUser) throw new AppError("credenciales inválidas", 401)
 
     const isPassMatch = await bcrypt.compare(password, validUser.password)
-    if (!isPassMatch) throw new AppError("credenciales inválidas", 400)
+    if (!isPassMatch) throw new AppError("credenciales inválidas", 401)
 
     // Si el usuario es valido generar un token para que pueda acceder a las rutas privadas
-    const token = generateToken({ id: validUser.id })
+    const token = generateToken({ id: validUser.id, role: validUser.role })
     return res
       .status(200)
-      .cookie('access_token', token, {
-        httpOnly: true, // evita el xss
-        secure: APP_MODE === 'prod', // solo por https (en prod)
-        sameSite: 'strict', // la cookie funciona exclusivamente en mi dominio
-        maxAge: 1000 * 60 * 60 * 24 * 2, // 2 dias. Es redundante ya que igualmente la validez del token esta limitada temporalmente.
-      })
+      .cookie(ACCESS_TOKEN_NAME, token, COOKIE_OPTIONS)
       .json({ message: "Login exitoso" })
+  }
+
+  static logout(req, res) {
+    res.cookie(ACCESS_TOKEN_NAME, '', { ...COOKIE_OPTIONS, expires: new Date(0) })
+    res.status(200).json({ message: "Logout exitoso" })
   }
 }

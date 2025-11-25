@@ -1,5 +1,5 @@
 import { AppError } from "../../../errors/error.js";
-import { Error as MongooseError } from "mongoose"
+import { Error as MongooseError, mongoose } from "mongoose"
 
 
 // Si no lo programe mal,
