@@ -1,109 +1,97 @@
 import { useNavigate, NavLink } from "react-router"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { UserLoginSchema } from "schemas"
+import { UserRegisterSchema } from "schemas"
 import { useForm } from "react-hook-form"
 import InputForm from "components/Forms/InputForm"
 import { toast } from "sonner"
-import { useAuthContext } from "context/auth"
-import { useEffect } from "react"
 
-export function Login() {
+export function Register() {
   const navigate = useNavigate()
-  const { loading, isAuth, login } = useAuthContext()
   const {
     control,
     handleSubmit,
     reset,
-    setError,
     formState: { errors, isSubmitting }
   } = useForm({
-    resolver: zodResolver(UserLoginSchema),
-    mode: "onBlur",
+    resolver: zodResolver(UserRegisterSchema),
     defaultValues: {
+      username: "",
       email: "",
       password: ""
     }
   })
 
   async function onSubmit(data) {
-    const req = await fetch("/api/auth/login", {
+    const req = await fetch("/api/auth/register", {
       method: "POST",
       body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json' },
-      credentials: "same-origin"
     })
 
     switch (req.status) {
       case 200:
-        toast.success("Ingreso exitoso 🥳")
+        toast.success("Registrado con exitosamente 🥳")
         reset()
-        login()
-        navigate(-1)
+        navigate("/login")
         break;
-      case 401:
+      case 400:
+        toast.error("Ya existe un usuario con su nombre o email")
         reset()
-        // Le seteo error sin mensajes a los campos para que se pinten de rojo 😳
-        setError("email", { type: "custom", message: "" })
-        setError("password", { type: "custom", message: "" })
-        toast.error("El email o constraseña es inválida")
         break;
       default:
-        reset()
-        toast.errer("Ocurrio un error al intentar ingresar. Vuelva más tarde...")
+        toast.error("Hubo un error registrando su usuario. Intente más tarde")
         break;
     }
-
-  }
-
-  // Si ya estoy logueado en la página lo redirecciono a su perfil
-  useEffect(() => {
-    if (isAuth) {
-      navigate("/perfil", { replace: true })
-    }
-  }, [isAuth, navigate])
-  if (loading || isAuth) {
-    return (<p>Cargando...</p>)
   }
 
   return (
     <section className="max-w-350 md:mt-25 mb-30 mx-auto flex flex-col items-center">
       <h2 className="text-4xl font-semibold font-title text-primary p-8 text-center text-balance">
-        Iniciar Sesión
+        Registrate
       </h2>
+
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="grid grid-cols-1 gap-5 p-5 max-w-100 w-full"
       >
-
         <InputForm
-          name='email'
+          name="username"
           control={control}
-          label='Email'
-          type='email'
+          label="Nombre de usuario"
+          type="text"
+          error={errors.username}
+          placeholder="Hermanos Jota"
+          className="col-span-1"
+        />
+        <InputForm
+          name="email"
+          control={control}
+          label="Email"
+          type="email"
           error={errors.email}
-          placeholder='email@mail.com'
-          className='col-span-1'
+          placeholder="hermanosjota@mail.com"
+          className="col-span-1"
         />
         <InputForm
           name="password"
           control={control}
-          label="Contraseña"
+          label="Constraseña"
           type="password"
           error={errors.password}
           placeholder="*****"
           className="col-span-1"
         />
 
-        <NavLink to="/register" className="font-normal text-home-100/80 hover:text-primary transition-colors">
-          ¿No tenes una cuenta? Registrate.
+        <NavLink to="/login" className="font-body font-normal text-home-100/80 hover:text-primary transition-colors">
+          ¿Ya tenes cuenta? Ingresar.
         </NavLink>
 
-        <button
-          type="submit"
+
+        <button type="submit"
           className={`col-span-1 p-5 bg-detail hover:bg-detail-200 text-neutral-50 transition-colors font-semibold
             ${isSubmitting ? "cursor-progress" : "cursor-pointer"}`}
         >
-          Iniciar
+          Registrarse
         </button>
       </form>
     </section>
