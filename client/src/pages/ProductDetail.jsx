@@ -53,7 +53,7 @@ export function ProductDetail() {
         <div className='lg:relative lg:size-full col-span-2 lg:col-span-1 p-5'>
           <div className='lg:sticky lg:top-0 bg-neutral-100 shadow-lg'>
             <div className='relative'>
-              {product.discount && (
+              {product?.discount > 0 && (
                 <span className='absolute top-5 left-5 bg-accent px-5 py-2 text-center text-neutral-50'>
                   -{product.discount}%
                 </span>

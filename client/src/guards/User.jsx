@@ -6,7 +6,6 @@ export default function UserGuard() {
   if (loading) {
     return (<p>Cargando...</p>)
   } else {
-    console.log(isAuth)
     return (isAuth ? <Outlet /> : <Navigate to="/login" replace />)
   }
 }

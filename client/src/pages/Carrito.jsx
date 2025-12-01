@@ -2,11 +2,46 @@ import ProductInCart from "components/Carrito/ProductInCart"
 import PrecioTotal from "components/Carrito/PrecioTotal"
 import { useCartContext } from "context/carrito"
 import Separator from "components/ui/Separator"
+import { useNavigate } from "react-router"
+import { useAuthContext } from "context/auth"
+import { Image } from "@unpic/react"
+import NoItemsView from "components/ui/NoItemsView"
 
 export function Carrito() {
-  const { items, totalPrice, increaseProduct, decreaseProduct, removeProduct } = useCartContext()
+  const {
+    items,
+    totalPrice,
+    increaseProduct,
+    decreaseProduct,
+    removeProduct,
+    processCart,
+  } = useCartContext()
+  const navigate = useNavigate()
+  const { isAuth } = useAuthContext()
 
-  // Todo: vista más linda para cuando no haya productos en el carrito 🤷‍♂️
+  function processPedido() {
+    // me aseguro que este logeado
+    if (!isAuth) { return navigate("/login") }
+
+    // en funcion de como procese el pedido lo redirijo o lo mantengo en carrito
+    const sucessProcessCart = processCart()
+    if (sucessProcessCart) {
+      return navigate("/mis-pedidos", { replace: true })
+    }
+
+  }
+  if (items.length === 0) {
+    return <NoItemsView
+      explain="Tu carrito está vacío."
+      buttonOpt={{
+        label: "Ver más productos",
+        onClick: () => { navigate("/catalogo") },
+        color: "bg-accent hover:bg-lime-700"
+      }}
+      imageOpt={{ src: "/assets/icons/checkout-shopping.svg", alt: "No items icon" }}
+    />
+  }
+
   return (
     <section className='max-w-370 md:mt-30 mt-10 2xl:mx-auto md:mx-10 mx-5 gap-10 grid lg:grid-cols-3 grid-cols-1'>
       <h1 className='lg:col-span-3 col-span-1 text-center font-title text-primary md:text-7xl text-5xl font-medium tracking-wider'>
@@ -27,8 +62,8 @@ export function Carrito() {
           </tr>
         </thead>
         <tbody className="table-row-group">
-          {items.length
-            ? items.map((prod) => (
+          {items.length > 0 &&
+            items.map((prod) => (
               <ProductInCart
                 key={prod.id}
                 p={prod}
@@ -39,13 +74,14 @@ export function Carrito() {
                 }}
               />
             ))
-            : ""}
+          }
         </tbody>
       </table>
 
       <PrecioTotal
         total={totalPrice}
         className="col-span-1 lg:col-start-3 col-start-1"
+        onSubmit={processPedido}
       />
     </section>
   )

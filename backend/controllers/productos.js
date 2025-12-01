@@ -4,13 +4,16 @@ import { normalizeString, shuffle, deleteFile } from "../utils/index.js"
 import { destination } from "../middleware/imageUploader.js" // mejor una variable de entorno(?)
 
 export class ProductosController {
-  static async getAll(req, res, next) {
+  static async getAll(req, res) {
     let productos = await ProductosModel.getAll()
 
-    const { q, r } = req.query
-    if (!q && !r) return res.json(productos)
+    // TODO: Implementar un mejor sistema de query params
+    const { q, r, limit } = req.query
+    if (!q && !r && !limit) return res.json(productos)
 
-    if (r) { productos = shuffle(productos) }
+    if (r) {
+      productos = shuffle(productos)
+    }
 
     if (q) {
       const normalizedQuery = normalizeString(q.toString()) // me preocupa que no pueda ser un string
@@ -19,6 +22,7 @@ export class ProductosController {
       )
     }
 
+    productos = productos.slice(0, limit)
     return res.json(productos)
   }
 

@@ -5,10 +5,10 @@
 // Uso: FooSchema.plugin(commonFormat)
 export function commonFormat(schema, options) {
   schema.set("toJSON", {
+    virtuals: true,
+    versionKey: false,
     transform: (doc, returnedObject) => {
-      returnedObject.id = returnedObject._id.toString()
       delete returnedObject._id
-      delete returnedObject.__v
     }
   })
 }

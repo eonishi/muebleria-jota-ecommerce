@@ -32,6 +32,7 @@ export class AuthController {
     }
 
     return res.status(200).json({
+      // No envies TODO el usuario porque filtras datos sensibles
       id: newUser.id,
       message: "Usuario creado con éxito!"
     })
@@ -48,7 +49,12 @@ export class AuthController {
     if (!isPassMatch) throw new AppError("credenciales inválidas", 401)
 
     // Si el usuario es valido generar un token para que pueda acceder a las rutas privadas
-    const token = generateToken({ id: validUser.id, role: validUser.role })
+    const token = generateToken({
+      id: validUser.id,
+      role: validUser.role,
+      email: validUser.email,
+      username: validUser.username
+    })
     return res
       .status(200)
       .cookie(ACCESS_TOKEN_NAME, token, COOKIE_OPTIONS)

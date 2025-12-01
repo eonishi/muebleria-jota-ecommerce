@@ -10,7 +10,6 @@ export function generateToken(payload) {
 export function verifyToken(token) {
   if (!token) throw new AppError("Token inexistente", 403)
   return jwt.verify(token, JWT_SECRET, function (err, decoded) {
-    console.log("err: ", err)
     if (err) {
       throw new AppError(err.message, 403)
     }

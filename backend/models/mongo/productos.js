@@ -10,13 +10,18 @@ export class ProductosModel {
   }
 
   static async getById({ id }) {
-    // Tiene un id valido para mongoDB??
     if (!isValidMongoId(id)) {
       return null
     }
 
     const producto = await Producto.findById(id)
     return producto
+  }
+
+  static async getByIds(ids = []) {
+    ids = ids.filter(isValidMongoId)
+    if (ids.length === 0) { return [] }
+    return await Producto.find({ _id: { $in: ids } }).lean() // mongoose doc: lean is great for high-performance, read-only cases
   }
 
   static async create(producto) {
@@ -56,4 +61,6 @@ export class ProductosModel {
       throwMongooseError(err)
     }
   }
+
+  static async
 }

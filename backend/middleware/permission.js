@@ -18,9 +18,7 @@ export function permission(...permittedRoles) {
     try {
       const userData = verifyToken(req.cookies[ACCESS_TOKEN_NAME])
       req.user = userData
-      console.log(userData)
     } catch (e) {
-      console.log("estoy entrando al catch")
       return forbidden()
     }
 

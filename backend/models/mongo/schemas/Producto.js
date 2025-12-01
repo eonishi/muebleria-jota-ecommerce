@@ -37,6 +37,14 @@ export const ProductoSchema = new Schema({
       message: "'specifications' debe ser un JSON de strings válidos",
     },
   },
+  discount: {
+    type: Number,
+    cast: "{VALUE} no es un númera válido",
+    required: false,
+    min: [0, "El descuento debe ser 0 o mayor"],
+    max: [100, "El descuento debe ser menor a 100"],
+    default: 0,
+  }
 }, { timestamps: true })
 
 ProductoSchema.plugin(commonFormat)

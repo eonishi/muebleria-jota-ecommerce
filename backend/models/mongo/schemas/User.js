@@ -8,11 +8,14 @@ export const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: [true, 'username deberia ser único'],
+    trim: true,
   },
   email: {
     type: String,
     required: true,
     unique: [true, 'email deberia ser único'],
+    trim: true,
+    lowercase: true,
   },
   password: {
     type: String,
