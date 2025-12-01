@@ -6,3 +6,6 @@ export { Login } from "./Login";
 export { NotFound } from "./NotFound";
 export { ProductDetail } from "./ProductDetail";
 export { NuevoProducto } from "./NuevoProducto";
+export { Register } from "./Register";
+export { MisPedidos } from "./MisPedidos";
+export { MiPerfil } from "./MiPerfil";

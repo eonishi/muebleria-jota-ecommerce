@@ -1,4 +1,5 @@
-import { Schema  } from "mongoose"
+import { Schema } from "mongoose"
+import { commonFormat } from "../utils/format.plugin.js"
 
 export const ProductoSchema = new Schema({
   product_name: {
@@ -21,8 +22,6 @@ export const ProductoSchema = new Schema({
     min: [0, "El stock no puede ser negativo"],
     default: 0,
   },
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now },
   specifications: {
     type: Object,
     of: String,
@@ -38,13 +37,14 @@ export const ProductoSchema = new Schema({
       message: "'specifications' debe ser un JSON de strings válidos",
     },
   },
-}).set("toJSON", {
-  // Formato de los datos al devolverlos
-  transform: (doc, returnedObject) => {
-    // Convierto el campo '_id' en 'id' porque así recibe los datos el cliente
-    // y elimino el campo '__v' que es propio de MongoDB, no tiene que ver con la api
-    returnedObject.id = returnedObject._id.toString()
-    delete returnedObject._id
-    delete returnedObject.__v
-  },
-})
+  discount: {
+    type: Number,
+    cast: "{VALUE} no es un númera válido",
+    required: false,
+    min: [0, "El descuento debe ser 0 o mayor"],
+    max: [100, "El descuento debe ser menor a 100"],
+    default: 0,
+  }
+}, { timestamps: true })
+
+ProductoSchema.plugin(commonFormat)

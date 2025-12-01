@@ -3,18 +3,21 @@ import Footer from "./Footer"
 import NavBar from "./NavBar"
 import { Toaster } from 'sonner'
 import { CartProvider } from 'context/carrito'
+import { AuthProvider } from 'context/auth'
 
 export default function AppLayout() {
   return (
     <>
       <ScrollRestoration />
-      <CartProvider>
+      <AuthProvider>
+        <CartProvider>
 
-        <NavBar />
-        <main className="grow min-h-dvh">
-          <Outlet />
-        </main>
-      </CartProvider>
+          <NavBar />
+          <main className="grow min-h-dvh">
+            <Outlet />
+          </main>
+        </CartProvider>
+      </AuthProvider>
       <Toaster />
       <Footer />
     </>

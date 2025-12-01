@@ -14,6 +14,16 @@ const menuOptions = [
     route: "/catalogo",
   },
   {
+    icon: "/assets/icons/user.svg",
+    title: "MI PERFIL",
+    route: "/perfil",
+  },
+  {
+    icon: "/assets/icons/shopping-bag-check.svg",
+    title: "MIS PEDIDOS",
+    route: "/mis-pedidos",
+  },
+  {
     icon: "/assets/icons/forward-message.svg",
     title: "CONTACTO",
     route: "/contacto",

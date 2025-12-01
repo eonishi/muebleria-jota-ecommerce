@@ -4,12 +4,11 @@ import { Suspense } from "react"
 import ProductCard from "components/ui/ProductCard"
 
 export default function ProductosDestacados() {
-  const { data, loading, error } = useFetch("/api/productos?r=true")
+  const { data, loading, error } = useFetch("/api/productos?r=true&limit=4")
   const { addProduct } = useCartContext()
 
   if (error) {
-    console.log(error)
-    return <div>Ocurrio un problema</div>
+    return <div></div>
   }
 
   return (
@@ -25,7 +24,7 @@ export default function ProductosDestacados() {
           {loading ? (
             <div>Cargando</div>
           ) : (
-            data.slice(0, 4).map((p) => (
+            data.map((p) => (
               <ProductCard
                 producto={p}
                 key={p.id}
