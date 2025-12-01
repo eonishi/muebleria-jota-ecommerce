@@ -36,33 +36,33 @@ export default function ReviewList({ reviews = MOCK_REVIEWS, initialAmount = 2 }
 
 const MOCK_REVIEWS = [
   {
-    username: "John",
+    username: "Juan",
     date: "Noviembre 24, 2025",
     review:
-      "I am 6 feet tall and 220 lbs. This shirt fit me perfectly in the chest and shoulders. My only complaint is that it is so long! I like to wear polo shirts untucked. This shirt goes completely past my rear end. If I wore it with ordinary shorts, you probably wouldnt be able to see the shorts at all – completely hidden by the shirt. It needs to be 4 to 5 inches shorter in terms of length to suit me. I have many RL polo shirts, and this one is by far the longest. I dont understand why.",
+      "Excelente calidad y diseño. El mueble es robusto y se ve muy elegante en mi sala de estar. La instalación fue sencilla y las instrucciones claras. Definitivamente recomendaría este producto a cualquiera que busque mejorar su hogar con un toque moderno.",
   },
   {
-    username: "Kennet R.",
+    username: "Carlos R.",
     date: "Agosto 16, 2024",
     review:
-      "The shirt was not the fabric I believed it to be. It says Classic Fit but was made like the older versions, not the soft cotton like my others. I don’t understand how the labels are the same but a completely different shirt. Oh well, stuck with it now.",
+      "La calidad del mueble es excepcional. Los materiales son duraderos y el acabado es impecable. Me encanta cómo se ve en mi sala de estar y ha recibido muchos cumplidos de mis amigos y familiares. La instalación fue fácil y rápida gracias a las instrucciones claras proporcionadas. Sin duda, una excelente compra que vale cada centavo.",
   },
   {
-    username: "Mike",
+    username: "Miguel S.",
     date: "Abril 12, 2024",
     review:
-      "Real authentic genuine quality however it fit me like an XL size when In fact Im L. Beware",
+      "Estoy muy satisfecho con mi compra. El mueble llegó a tiempo y en perfectas condiciones. La calidad del material es impresionante y el diseño es moderno y funcional. La instalación fue sencilla y las instrucciones eran claras. Recomiendo este producto a cualquiera que busque un mueble de alta calidad para su hogar.",
   },
   {
     username: "Ervin",
     date: "Julio 23, 2023",
     review:
-      "The Ralph Lauren quaility is here in abundance. My husband always says that the Lauren polos fit better and last longer than any other brand.I love the new “heathered” color and the price is always excellent through shop",
+      "Compré este mueble para mi sala de estar y estoy muy contento con mi elección. La calidad del material es excelente y el diseño es moderno y elegante. La instalación fue fácil gracias a las instrucciones claras proporcionadas. Definitivamente recomendaría este producto a cualquiera que busque un mueble de alta calidad para su hogar.",
   },
   {
-    username: "Patrick",
+    username: "Patricia T.",
     date: "Enero 01, 2023",
     review:
-      "My son loved this Jacket for his Senior Prom… He got sooo many compliments! He is slim build 5’11 and 150lbs … I ordered a large … it was a little big … but it was fine!",
+      "El mueble superó mis expectativas en términos de calidad y diseño. Los materiales son robustos y el acabado es impecable. La instalación fue sencilla y las instrucciones claras. Me encanta cómo se ve en mi sala de estar y ha recibido muchos cumplidos de mis amigos y familiares. Sin duda, una excelente compra que vale cada centavo.",
   },
 ]
